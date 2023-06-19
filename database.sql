@@ -29,7 +29,7 @@ CREATE TABLE user_quests (
   "id" SERIAL PRIMARY KEY,
   "user_id" INT,
   "quest_id" INT,
-  "is_complete" BOOLEAN,
+  "is_complete" BOOLEAN DEFAULT FALSE,
   FOREIGN KEY (user_id) REFERENCES "user"(id),
   FOREIGN KEY (quest_id) REFERENCES quests(id)
 );
