@@ -30,7 +30,7 @@ router.get('/trader/:trader_id', (req, res) => {
 
 router.post('/:id/complete', (req, res) => {
   const userId = req.user.id;
-  const questId = req.params.id; 
+  const questId = req.params.id;
 
   const query = `
     INSERT INTO user_quests ("user_id", "quest_id", "is_complete")
@@ -54,12 +54,13 @@ router.post('/:id/complete', (req, res) => {
 // GET request for Notes page //
 
 router.get('/notes', (req, res) => {
-  const userId = req.user.id; 
+  const userId = req.user.id;
 
   const query = `
     SELECT "user_id", "title", "description", "timestamp"
     FROM notes
-    WHERE "user_id" = $1;
+    WHERE "user_id" = $1
+    RETURNING *;
   `;
 
   const values = [userId]; // Pass the user ID as a parameter //
@@ -80,7 +81,7 @@ router.get('/notes', (req, res) => {
 // POST request for adding new notes from Notes page //
 
 router.post('/notes', (req, res) => {
-  const userId = req.user.id; 
+  const userId = req.user.id;
   const { title, description } = req.body;
   console.log(req.body);
   const query = `
@@ -106,7 +107,7 @@ router.post('/notes', (req, res) => {
 // PUT request for editing existing notes // 
 
 router.put('/notes/:id', (req, res) => {
-  const userId = req.user.id; 
+  const userId = req.user.id;
   const noteId = parseInt(req.params.id); // Convert the note ID to an integer
   const { title, description } = req.body;
   console.log(req.body);
@@ -135,6 +136,36 @@ router.put('/notes/:id', (req, res) => {
 });
 
 // End PUT request for editing existing notes // 
+
+// DELETE request for users to delete notes that only they have added // 
+
+router.delete('/notes/:id', (req, res) => {
+  const userId = req.user.id;
+  const noteId = req.params.id;
+
+  const query = `
+    DELETE FROM notes
+    WHERE "id" = $1 AND "user_id" = $2
+    RETURNING *;
+  `;
+  const values = [noteId, userId];
+
+  pool.query(query, values)
+    .then((result) => {
+      if (result.rowCount === 0) {
+        res.sendStatus(404);
+        return;
+      }
+      console.log(result.rows[0]);
+      res.send(result.rows[0]);
+    })
+    .catch((error) => {
+      console.log('Error deleting note:', error);
+      res.sendStatus(500);
+    });
+});
+
+// End DELETE request for the Notes page // 
 
 
 module.exports = router;
