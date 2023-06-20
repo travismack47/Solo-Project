@@ -5,23 +5,24 @@ const router = express.Router();
 // GET request for each Trader page //
 
 router.get('/trader/:trader_id', (req, res) => {
-  const traderId = req.params.trader_id
+  const traderId = req.params.trader_id;
 
   const query = `
-  SELECT quests.id, quests.name, quests.description
-  FROM quests
-  JOIN traders ON traders.id = quests.trader_id
-  WHERE traders.id = ${traderId};
-  `
-  pool.query(query)
-    .then((response) => {
-      console.log(response);
-      res.send(result.rows)
+    SELECT quests.id, quests.name, quests.description, user_quests.is_complete
+    FROM quests
+    LEFT JOIN user_quests ON user_quests.quest_id = quests.id AND user_quests.user_id = $1
+    WHERE quests.trader_id = $2;
+  `;
+  const values = [req.user.id, traderId]; 
+  pool.query(query, values)
+    .then((result) => {
+      console.log(result);
+      res.send(result.rows);
     })
     .catch((error) => {
-      console.log('error getting quests', error);
+      console.log('Error getting quests', error);
       res.sendStatus(500);
-    })
+    });
 });
 
 // End Trader page GET request //
