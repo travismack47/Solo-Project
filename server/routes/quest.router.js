@@ -1,10 +1,10 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
-
+const { rejectUnauthenticated } = require('../modules/authentication-middleware')
 // GET request for each Trader page //
 
-router.get('/:trader_id', (req, res) => {
+router.get('/:trader_id', rejectUnauthenticated, (req, res) => {
   const traderId = req.params.trader_id;
 
   const query = `
@@ -29,7 +29,7 @@ router.get('/:trader_id', (req, res) => {
 
 // POST request for when a user marks a quest as complete on the Traders page //
 
-router.post('/:id/complete', (req, res) => {
+router.post('/:id/complete', rejectUnauthenticated, (req, res) => {
   const userId = req.user.id;
   const questId = req.params.id;
 

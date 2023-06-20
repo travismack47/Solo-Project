@@ -1,10 +1,10 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
-
+const { rejectUnauthenticated } = require('../modules/authentication-middleware')
 // GET request for Notes page //
 
-router.get('/:id', (req, res) => {
+router.get('/:id', rejectUnauthenticated, (req, res) => {
     const userId = req.user.id;
 
     const query = `
@@ -30,7 +30,7 @@ router.get('/:id', (req, res) => {
 
 // POST request for adding new notes from Notes page //
 
-router.post('/newnote/:id', (req, res) => {
+router.post('/newnote/:id', rejectUnauthenticated, (req, res) => {
     const userId = req.user.id;
     const { title, description } = req.body;
     console.log(req.body);
@@ -56,7 +56,7 @@ router.post('/newnote/:id', (req, res) => {
 
 // PUT request for editing existing notes // 
 
-router.put('/edit/:id', (req, res) => {
+router.put('/edit/:id', rejectUnauthenticated, (req, res) => {
     const userId = req.user.id;
     const noteId = parseInt(req.params.id); // Convert the note ID to an integer //
     const { title, description } = req.body;
@@ -89,7 +89,7 @@ router.put('/edit/:id', (req, res) => {
 
 // DELETE request for users to delete notes that only they have added // 
 
-router.delete('/delete/:id', (req, res) => {
+router.delete('/delete/:id', rejectUnauthenticated, (req, res) => {
     const userId = req.user.id;
     const noteId = req.params.id;
 
