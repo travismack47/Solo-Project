@@ -19,7 +19,8 @@ import InfoPage from './Pages/InfoPage/InfoPage';
 import LandingPage from './Pages/LandingPage/LandingPage';
 import LoginPage from './Pages/LoginPage/LoginPage';
 import RegisterPage from './Pages/RegisterPage/RegisterPage';
-
+import Prapor from './Pages/Prapor/Prapor';
+import Therapist from './Pages/Therapist/Therapist';
 import './App.css';
 
 function App() {
@@ -109,6 +110,14 @@ function App() {
               <LandingPage />
             }
           </Route>
+
+          <Route exact path='/prapor'>
+            <Prapor />
+          </Route>
+
+            <Route exact path='/therapist'>
+              <Therapist />
+            </Route>
 
           {/* If none of the other routes matched, we will show a 404. */}
           <Route>
