@@ -1,10 +1,11 @@
+// Creating initial state to assign to the reducer //
+
 const initialState = {
-    notes: [],
-    error: null,
+    notes: []
 };
 
 const notesReducer = (state = initialState, action) => {
-    switch (action.type) {
+    switch (action.type) {  // Switch statement handling the different types of actions // 
         case 'SET_NOTES':
             return {
                 ...state,
@@ -20,7 +21,7 @@ const notesReducer = (state = initialState, action) => {
         case 'UPDATE_NOTE':
             return {
                 ...state,
-                notes: state.notes.map((note) =>
+                notes: state.notes.map((note) => // Looping through 
                     note.id === action.payload.id ? action.payload : note
                 ),
             };
@@ -31,5 +32,8 @@ const notesReducer = (state = initialState, action) => {
                 notes: state.notes.filter((note) => note.id !== action.payload),
             };
     };
-}
+};
+
+// Exporting reducer to use in root reducer file // 
+
 export default notesReducer;

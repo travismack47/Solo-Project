@@ -1,9 +1,11 @@
+// Setting inital state to assign to the reducer //
+
 const initialState = {
     quests: [],
   };
   
   const questsReducer = (state = initialState, action) => {
-    switch (action.type) {
+    switch (action.type) { // Switch statement for handling action types // 
       case 'SET_TRADER_QUESTS':
         return {
           ...state,
@@ -14,4 +16,6 @@ const initialState = {
     }
   };
   
+  // Exporting reducer to use in root reducer file //
+
   export default questsReducer;
