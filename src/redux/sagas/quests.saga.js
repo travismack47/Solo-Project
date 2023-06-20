@@ -13,9 +13,20 @@ function* fetchTraderQuests(action) {
   };
 };
 
+function* markQuestComplete(action) {
+  try {
+    yield axios.post(`/api/quests/${action.payload.id}/complete`, action.payload);
+    yield put({ type: 'MARK_QUEST_COMPLETE_SUCCESS', payload: action.payload.id });
+  } catch (error) {
+    console.log('error marking complete', error);
+  }
+}
+
+
 // Watcher saga to listen for the FETCH_TRADER_QUESTS action
 function* watchFetchTraderQuests() {
-  yield takeEvery('FETCH_TRADER_QUESTS', fetchTraderQuests);
+  yield takeEvery('FETCH_TRADER_QUESTS', fetchTraderQuests),
+  yield takeEvery('MARK_COMPLETE', markQuestComplete)
 };
 
 // Exporting the watcher saga to use in other files

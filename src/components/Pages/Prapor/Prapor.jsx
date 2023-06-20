@@ -1,39 +1,27 @@
-import React, { useState, useEffect } from "react";
-import { useDispatch } from "react-redux";
-import axios from "axios";
+import React, { useEffect } from "react";
+import { useDispatch, useSelector } from "react-redux";
+import QuestItem from "../../QuestItem/QuestItem";
+
 
 export default function Prapor() {
   const dispatch = useDispatch();
-  const [quests, setQuests] = useState([]);
+  const traderId = 1; // Set the trader ID for Prapor (replace with dynamic value if needed)
 
   useEffect(() => {
-    dispatch({ type: 'FETCH_TRADER_QUESTS' });
-    fetchQuests();
+    dispatch({ type: 'FETCH_TRADER_QUESTS', payload: traderId });
   }, [dispatch]);
 
-  const fetchQuests = () => {
-    axios
-      .get('/api/quests/1')
-      .then((response) => {
-        setQuests(response.data);
-      })
-      .catch((error) => {
-        console.log('Error fetching quests:', error);
-      });
-  };
+ const quests = useSelector(store => store.quests)
+
 
   return (
     <>
-    <div>
-      <h1>Prapor's Quests</h1>
-      {quests.map((quest) => (
-        <div key={quest.id}>
-          <h3>{quest.name}</h3>
-          <p>{quest.description}</p>
-          <p>Complete: {quest.is_complete ? 'Yes' : 'No'}</p>
-        </div>
-      ))}
-    </div>
+      <div>
+        <h1>Prapor's Quests</h1>
+        {quests.map((quest) => (
+          <QuestItem key={quest.id} quest={quest} />
+        ))}
+      </div>
     </>
   );
 }

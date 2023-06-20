@@ -21,6 +21,7 @@ import LoginPage from './Pages/LoginPage/LoginPage';
 import RegisterPage from './Pages/RegisterPage/RegisterPage';
 import Prapor from './Pages/Prapor/Prapor';
 import Therapist from './Pages/Therapist/Therapist';
+import Notes from './Pages/Notes/Notes';
 import './App.css';
 
 function App() {
@@ -118,7 +119,9 @@ function App() {
             <Route exact path='/therapist'>
               <Therapist />
             </Route>
-
+            <Route exact path='/notes'>
+              <Notes />
+            </Route>
           {/* If none of the other routes matched, we will show a 404. */}
           <Route>
             <h1>404</h1>

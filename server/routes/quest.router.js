@@ -32,12 +32,13 @@ router.get('/:trader_id', rejectUnauthenticated, (req, res) => {
 router.post('/:id/complete', rejectUnauthenticated, (req, res) => {
   const userId = req.user.id;
   const questId = req.params.id;
+  const isComplete = true;
 
   const query = `
     INSERT INTO user_quests ("user_id", "quest_id", "is_complete")
-    VALUES ($1, $2, TRUE)
+    VALUES ($1, $2, $3)
   `;
-  const values = [userId, questId];
+  const values = [userId, questId, isComplete];
 
   pool.query(query, values)
     .then((result) => {
@@ -49,6 +50,7 @@ router.post('/:id/complete', rejectUnauthenticated, (req, res) => {
       res.sendStatus(500);
     });
 });
+
 
 // End POST request for marking quests as complete on the Traders page // 
 
