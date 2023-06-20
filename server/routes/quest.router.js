@@ -4,7 +4,7 @@ const router = express.Router();
 
 // GET request for each Trader page //
 
-router.get('/trader/:trader_id', (req, res) => {
+router.get('/:trader_id', (req, res) => {
   const traderId = req.params.trader_id;
 
   const query = `
