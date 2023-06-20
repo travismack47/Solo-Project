@@ -1,4 +1,4 @@
-import { takeEvery, put } from 'redux-saga/effects';
+import { takeEvery, put, all } from 'redux-saga/effects';
 import axios from 'axios';
 
 // Worker saga to handle fetching quests for a specific trader
@@ -9,16 +9,18 @@ function* fetchTraderQuests(action) {
     const quests = response.data;
     yield put({ type: 'SET_TRADER_QUESTS', payload: quests });
   } catch (error) {
-   console.log('error fetching quests', error);
-  }
-}
+    console.log('error fetching quests', error);
+  };
+};
 
 // Watcher saga to listen for the FETCH_TRADER_QUESTS action
 function* watchFetchTraderQuests() {
   yield takeEvery('FETCH_TRADER_QUESTS', fetchTraderQuests);
-}
+};
 
-// Exporting the Watcher saga to use in other files
-export default [
-    watchFetchTraderQuests
-];
+// Exporting the watcher saga to use in other files
+export default function* questsSaga() {
+  yield all([
+    watchFetchTraderQuests(),
+  ]);
+};

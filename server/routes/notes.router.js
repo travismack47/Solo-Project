@@ -4,7 +4,7 @@ const router = express.Router();
 
 // GET request for Notes page //
 
-router.get('/', (req, res) => {
+router.get('/:id', (req, res) => {
     const userId = req.user.id;
 
     const query = `
@@ -30,7 +30,7 @@ router.get('/', (req, res) => {
 
 // POST request for adding new notes from Notes page //
 
-router.post('/', (req, res) => {
+router.post('/newnote/:id', (req, res) => {
     const userId = req.user.id;
     const { title, description } = req.body;
     console.log(req.body);
@@ -56,9 +56,9 @@ router.post('/', (req, res) => {
 
 // PUT request for editing existing notes // 
 
-router.put('/:id', (req, res) => {
+router.put('/edit/:id', (req, res) => {
     const userId = req.user.id;
-    const noteId = parseInt(req.params.id); // Convert the note ID to an integer
+    const noteId = parseInt(req.params.id); // Convert the note ID to an integer //
     const { title, description } = req.body;
     console.log(req.body);
     console.log(userId);
@@ -73,7 +73,7 @@ router.put('/:id', (req, res) => {
     pool.query(query, values)
         .then((result) => {
             if (result.rowCount === 0) {
-                res.sendStatus(404);
+                res.sendStatus(404); // If no notes match the query, send a 404 status to the user //
                 return;
             }
             console.log(result.rows[0]);
@@ -89,7 +89,7 @@ router.put('/:id', (req, res) => {
 
 // DELETE request for users to delete notes that only they have added // 
 
-router.delete('/:id', (req, res) => {
+router.delete('/delete/:id', (req, res) => {
     const userId = req.user.id;
     const noteId = req.params.id;
 
