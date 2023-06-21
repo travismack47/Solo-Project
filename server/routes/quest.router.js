@@ -7,13 +7,13 @@ const { rejectUnauthenticated } = require('../modules/authentication-middleware'
 // GET request for each Trader page //
 router.get('/:trader_id', rejectUnauthenticated, (req, res) => {
   const traderId = req.params.trader_id;
-
+  // JOIN query to combine data from the quests table and the user_quests table //
   const query = `
   SELECT quests.id, quests.name, quests.description, user_quests.id as user_quest_id
-  FROM quests
+  FROM quests 
   LEFT JOIN user_quests ON user_quests.quest_id = quests.id AND user_quests.user_id = $1
   WHERE quests.trader_id = $2;
-`;
+`; 
   const values = [req.user.id, traderId]; 
   pool.query(query, values)
     .then((result) => {

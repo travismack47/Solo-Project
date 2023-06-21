@@ -27,7 +27,27 @@ function Nav() {
             <Link className="navLink" to="/user">
               Home
             </Link>
-
+            <Link className='navLink' to='/prapor'>
+              Prapor
+            </Link>
+            <Link className='navLink' to='/therapist'>
+              Therapist
+            </Link>
+            <Link className='navLink' to='/skier'>
+              Skier
+            </Link>
+            <Link className='navLink' to='/jaeger'>
+              Jaeger
+            </Link>
+            <Link className='navLink' to='/peacekeeper'>
+              Peacekeeper
+            </Link>
+            <Link className='navLink' to='/mechanic'>
+              Mechanic
+            </Link>
+            <Link className='navLink' to='/ragman'>
+              Ragman
+            </Link>
             <Link className="navLink" to="/info">
               Info Page
             </Link>
