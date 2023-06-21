@@ -21,6 +21,11 @@ import LoginPage from './Pages/LoginPage/LoginPage';
 import RegisterPage from './Pages/RegisterPage/RegisterPage';
 import Prapor from './Pages/Prapor/Prapor';
 import Therapist from './Pages/Therapist/Therapist';
+import Skier from './Pages/Skier/Skier';
+import Jaeger from './Pages/Jaeger/Jaeger';
+import Peacekeeper from './Pages/Peacekeeper/Peacekeeper';
+import Mechanic from './Pages/Mechanic/Mechanic';
+import Ragman from './Pages/Ragman/Ragman';
 import Notes from './Pages/Notes/Notes';
 import './App.css';
 
@@ -121,6 +126,21 @@ function App() {
           </Route>
           <Route exact path='/notes'>
             <Notes />
+          </Route>
+          <Route exact path='/skier'>
+            <Skier />
+          </Route>
+          <Route exact path ='/jaeger'>
+            <Jaeger />
+          </Route>
+          <Route exact path='/peacekeeper'>
+            <Peacekeeper />
+          </Route>
+          <Route exact path='/mechanic'>
+            <Mechanic />
+          </Route>
+          <Route exact path='/ragman'>
+            <Ragman /> 
           </Route>
           {/* If none of the other routes matched, we will show a 404. */}
           <Route>
