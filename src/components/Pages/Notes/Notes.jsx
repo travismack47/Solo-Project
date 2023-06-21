@@ -13,7 +13,7 @@ export default function Notes() {
     dispatch({ type: "FETCH_NOTES" });
   }, [dispatch]);
 
-  const handleNote = () => {
+  const handleNote = () => { // Function to handle adding a new note sending the values of 
     dispatch({ type: "ADD_NOTE", payload: { title: newNoteTitle, description: newNoteDesc } });
     setNewNoteTitle('');
     setNewNoteDesc('');

@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from "react";
-import { useDispatch, useSelector } from "react-redux";
+import { useDispatch } from "react-redux";
 import moment from "moment";
 
 const NoteItem = ({ note }) => {
@@ -8,7 +8,7 @@ const NoteItem = ({ note }) => {
   const [newNoteDesc, setNewNoteDesc] = useState(note.description);
   const [isEditable, setIsEditable] = useState(false);
 
-  useEffect(() => {
+  useEffect(() => { // Runs on page re-render and fetches user notes, re-renders when a new action is dispatched //
     dispatch({ type: 'FETCH_NOTES' })
   }, [dispatch]);
 
@@ -16,14 +16,14 @@ const NoteItem = ({ note }) => {
     setIsEditable(true);
   };
 
-  const handleUpdate = () => {
+  const handleUpdate = () => { // Function to handle the submitting of an updated existing note //
     dispatch({ type: "UPDATE_NOTE", payload: { title: newNoteTitle, description: newNoteDesc, noteId: note.id } });
     setIsEditable(false);
     setNewNoteTitle('');
     setNewNoteDesc('');
   };
 
-  const handleDelete = () => {
+  const handleDelete = () => { // Function to handle deleting an existing note //
     dispatch({ type: "DELETE_NOTE", payload: { noteId: note.id } });
   };
 

@@ -1,20 +1,19 @@
 const express = require('express');
 const pool = require('../modules/pool');
 const router = express.Router();
-const { rejectUnauthenticated } = require('../modules/authentication-middleware')
-// GET request for Notes page //
+const { rejectUnauthenticated } = require('../modules/authentication-middleware') // Importing rejectUnauthenticated to use for checking
+// if the user is logged in and for displaying specific data for that user //
 
+// GET request for Notes page //
 router.get('/:id', rejectUnauthenticated, (req, res) => {
     const userId = req.user.id;
-
     const query = `
       SELECT *
       FROM notes
       WHERE "user_id" = $1
+      ORDER BY id
     `;
-
     const values = [userId]; // Pass the user ID as a parameter //
-
     pool.query(query, values)
         .then((result) => {
             console.log(result);
@@ -25,11 +24,9 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
             res.sendStatus(500);
         });
 });
-
 //End GET request for Notes page //
 
 // POST request for adding new notes from Notes page //
-
 router.post('/newnote/:id', rejectUnauthenticated, (req, res) => {
     const userId = req.user.id;
     const { title, description } = req.body;
@@ -44,18 +41,16 @@ router.post('/newnote/:id', rejectUnauthenticated, (req, res) => {
     pool.query(query, values)
         .then((result) => {
             console.log(result.rows[0]);
-            res.send(result.rows[0]);
+            res.send(result.rows[0]); // Sends the first item in the array which is the newly added note //
         })
         .catch((error) => {
             console.log('Error adding new note', error);
             res.sendStatus(500);
         });
 });
-
 // End POST request for posting new note // 
 
 // PUT request for editing existing notes // 
-
 router.put('/edit/:id', rejectUnauthenticated, (req, res) => {
     const userId = req.user.id;
     const noteId = parseInt(req.params.id); // Convert the note ID to an integer //
@@ -84,11 +79,9 @@ router.put('/edit/:id', rejectUnauthenticated, (req, res) => {
             res.sendStatus(500);
         });
 });
-
 // End PUT request for editing existing notes // 
 
 // DELETE request for users to delete notes that only they have added // 
-
 router.delete('/delete/:id', rejectUnauthenticated, (req, res) => {
     const userId = req.user.id;
     const noteId = req.params.id;
@@ -106,7 +99,6 @@ router.delete('/delete/:id', rejectUnauthenticated, (req, res) => {
             console.log('error deleting note', error);
         });
 });
-
 // End DELETE request for the Notes page // 
 
 module.exports = router;
