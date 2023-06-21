@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
+import moment from "moment";
 
 const NoteItem = ({ note }) => {
   const dispatch = useDispatch();
@@ -38,7 +39,7 @@ const NoteItem = ({ note }) => {
         <>
           <p>{note.title}</p>
           <p>{note.description}</p>
-          <p>{note.timestamp}</p>
+          <p>{moment(note.timestamp).format('MMMM Do YYYY, h:mm:ss a')}</p>
           <button onClick={handleEdit}>Edit</button>
           <button onClick={handleDelete}>Delete</button>
         </>
