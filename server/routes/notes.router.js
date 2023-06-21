@@ -8,7 +8,7 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
     const userId = req.user.id;
 
     const query = `
-      SELECT "user_id", "title", "description", "timestamp"
+      SELECT *
       FROM notes
       WHERE "user_id" = $1
     `;
@@ -92,26 +92,18 @@ router.put('/edit/:id', rejectUnauthenticated, (req, res) => {
 router.delete('/delete/:id', rejectUnauthenticated, (req, res) => {
     const userId = req.user.id;
     const noteId = req.params.id;
-
+    console.log(noteId);
+    console.log(userId);
     const query = `
       DELETE FROM notes
       WHERE "id" = $1 AND "user_id" = $2
       RETURNING *;
     `;
     const values = [noteId, userId];
-
     pool.query(query, values)
-        .then((result) => {
-            if (result.rowCount === 0) {
-                res.sendStatus(404);
-                return;
-            }
-            console.log(result.rows[0]);
-            res.send(result.rows[0]);
-        })
+        .then(res.sendStatus(200))
         .catch((error) => {
-            console.log('Error deleting note:', error);
-            res.sendStatus(500);
+            console.log('error deleting note', error);
         });
 });
 

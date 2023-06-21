@@ -41,10 +41,11 @@ function* updateNote(action) {
 // Worker saga to handle deleting a note //
 function* deleteNote(action) {
     try {
+        console.log(action.payload);
         const { noteId, userId } = action.payload;
-        yield axios.delete(`/api/notes/delete/${noteId}`);
+        yield axios.delete(`/api/notes/delete/${noteId}`, { noteId, userId });
         // Dispatch an action to fetch the updated notes // 
-        yield put({ type: 'FETCH_NOTES', payload: userId });
+        yield put({ type: 'FETCH_NOTES' });
     } catch (error) {
         console.log('error deleting a note', error);
     };
