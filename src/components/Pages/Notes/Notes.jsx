@@ -1,6 +1,5 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { useRouteMatch } from "react-router-dom/cjs/react-router-dom.min";
 
 export default function Notes() {
     const dispatch = useDispatch();

@@ -116,12 +116,12 @@ function App() {
             <Prapor />
           </Route>
 
-            <Route exact path='/therapist'>
-              <Therapist />
-            </Route>
-            <Route exact path='/notes'>
-              <Notes />
-            </Route>
+          <Route exact path='/therapist'>
+            <Therapist />
+          </Route>
+          <Route exact path='/notes'>
+            <Notes />
+          </Route>
           {/* If none of the other routes matched, we will show a 404. */}
           <Route>
             <h1>404</h1>

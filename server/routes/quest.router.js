@@ -8,11 +8,11 @@ router.get('/:trader_id', rejectUnauthenticated, (req, res) => {
   const traderId = req.params.trader_id;
 
   const query = `
-    SELECT quests.id, quests.name, quests.description, user_quests.is_complete
-    FROM quests
-    LEFT JOIN user_quests ON user_quests.quest_id = quests.id AND user_quests.user_id = $1
-    WHERE quests.trader_id = $2;
-  `;
+  SELECT quests.id, quests.name, quests.description, user_quests.id as user_quest_id
+  FROM quests
+  LEFT JOIN user_quests ON user_quests.quest_id = quests.id AND user_quests.user_id = $1
+  WHERE quests.trader_id = $2;
+`;
   const values = [req.user.id, traderId]; 
   pool.query(query, values)
     .then((result) => {
@@ -32,13 +32,11 @@ router.get('/:trader_id', rejectUnauthenticated, (req, res) => {
 router.post('/:id/complete', rejectUnauthenticated, (req, res) => {
   const userId = req.user.id;
   const questId = req.params.id;
-  const isComplete = true;
-
   const query = `
-    INSERT INTO user_quests ("user_id", "quest_id", "is_complete")
-    VALUES ($1, $2, $3)
+    INSERT INTO user_quests ("user_id", "quest_id")
+    VALUES ($1, $2)
   `;
-  const values = [userId, questId, isComplete];
+  const values = [userId, questId];
 
   pool.query(query, values)
     .then((result) => {
