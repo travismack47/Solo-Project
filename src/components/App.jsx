@@ -12,7 +12,7 @@ import Nav from './Shared/Nav/Nav';
 import Footer from './Shared/Footer/Footer';
 
 import ProtectedRoute from './Shared/ProtectedRoute/ProtectedRoute';
-
+// Importing component pages to set up routes for and for general access inside of this app.jsx file //
 import AboutPage from './Pages/AboutPage/AboutPage';
 import UserPage from './Pages/UserPage/UserPage';
 import InfoPage from './Pages/InfoPage/InfoPage';
@@ -28,7 +28,7 @@ import Mechanic from './Pages/Mechanic/Mechanic';
 import Ragman from './Pages/Ragman/Ragman';
 import Notes from './Pages/Notes/Notes';
 import './App.css';
-
+// End component imports //
 function App() {
   const dispatch = useDispatch();
 

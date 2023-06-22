@@ -5,20 +5,19 @@ import axios from 'axios';
 function* fetchTraderQuests(action) {
   try {
     const traderId = action.payload;
-    const response = yield axios.get(`/api/quests/${traderId}`);
+    const response = yield axios.get(`/api/quests/${traderId}`); // GET request to display specific trader quests on each page //
     const quests = response.data;
-    yield put({ type: 'SET_TRADER_QUESTS', payload: quests });
+    yield put({ type: 'SET_TRADER_QUESTS', payload: quests }); // Setting quests for the Redux store to hold //
   } catch (error) {
-    console.log('error fetching quests', error);
+    console.log('error fetching quests', error); // Logging any errors to the console //
   };
 };
 
 function* markQuestComplete(action) { // Handles marking a quest complete (adding to the user_quests table) //
   try {
-    yield axios.post(`/api/quests/${action.payload.id}/complete`, action.payload);
-    yield put({ type: 'MARK_QUEST_COMPLETE_SUCCESS', payload: action.payload.id });
+    yield axios.post(`/api/quests/${action.payload.id}/complete`, action.payload); // POST request for posting to database //
   } catch (error) {
-    console.log('error marking complete', error);
+    console.log('error marking complete', error); // Logging any errors to the console //
   }
 }
 
@@ -31,7 +30,7 @@ function* watchFetchTraderQuests() {
 function* watchMarkQuestComplete() {
   yield takeEvery('MARK_COMPLETE', markQuestComplete)
 }
-// Exporting the watcher saga to use in other files //
+// Exporting the watcher sagas to use in other files //
 export default function* questsSaga() {
   yield all([
     watchFetchTraderQuests(),

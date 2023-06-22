@@ -11,7 +11,7 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
       SELECT *
       FROM notes
       WHERE "user_id" = $1
-      ORDER BY id DESC
+      ORDER BY timestamp DESC
     `;
     const values = [userId]; // Pass the user ID as a parameter //
     pool.query(query, values)
@@ -32,8 +32,8 @@ router.post('/newnote/:id', rejectUnauthenticated, (req, res) => {
     const { title, description } = req.body;
     console.log(req.body);
     const query = `
-      INSERT INTO notes ("user_id", "title", "description", "timestamp")
-      VALUES ($1, $2, $3, NOW())
+      INSERT INTO notes ("user_id", "title", "description")
+      VALUES ($1, $2, $3)
       RETURNING *;
     `;
     const values = [userId, title, description]; // Pass the user ID as a parameter and the title and description as the request body //
@@ -59,11 +59,11 @@ router.put('/edit/:id', rejectUnauthenticated, (req, res) => {
     console.log(userId);
     const query = `
       UPDATE notes
-      SET "title" = $1, "description" = $2
-      WHERE "id" = $3 AND "user_id" = $4
+      SET "title" = $1, "description" = $2, "timestamp" = $3
+      WHERE "id" = $4 AND "user_id" = $5
       RETURNING *;
     `;
-    const values = [title, description, noteId, userId];
+    const values = [title, description, `NOW()`, noteId, userId];
 
     pool.query(query, values)
         .then((result) => {

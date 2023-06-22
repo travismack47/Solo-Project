@@ -6,12 +6,13 @@ import QuestItem from "../../QuestItem/QuestItem";
 export default function Prapor() {
     const dispatch = useDispatch();
     const traderId = 1; // Set the trader ID for Prapor //
-
-    useEffect(() => {
+    
+    useEffect(() => { // Dispatches the FETCH_TRADER_QUESTS action upon every re-render, sending the trader ID to make sure only
+        // the quests from that specific trader are shown on the DOM //
         dispatch({ type: 'FETCH_TRADER_QUESTS', payload: traderId });
-    }, [dispatch]);
+    }, []);
 
-    const quests = useSelector(store => store.quests)
+    const quests = useSelector(store => store.quests) // Assigning the quests variable to equal the Redux store quests //
 
 
     return (
