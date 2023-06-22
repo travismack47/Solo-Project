@@ -11,7 +11,7 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
       SELECT *
       FROM notes
       WHERE "user_id" = $1
-      ORDER BY id
+      ORDER BY id DESC
     `;
     const values = [userId]; // Pass the user ID as a parameter //
     pool.query(query, values)
