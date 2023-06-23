@@ -20,7 +20,7 @@ router.get('/:id', rejectUnauthenticated, (req, res) => {
             res.send(result.rows);
         })
         .catch((error) => {
-            console.log('Error getting notes', error);
+            console.log('Error getting notes', error); // Logging any errors to the console //
             res.sendStatus(500);
         });
 });
@@ -44,7 +44,7 @@ router.post('/newnote/:id', rejectUnauthenticated, (req, res) => {
             res.send(result.rows[0]); // Sends the first item in the array which is the newly added note //
         })
         .catch((error) => {
-            console.log('Error adding new note', error);
+            console.log('Error adding new note', error); // Logging any errors to the console //
             res.sendStatus(500);
         });
 });
@@ -75,7 +75,7 @@ router.put('/edit/:id', rejectUnauthenticated, (req, res) => {
             res.send(result.rows[0]);
         })
         .catch((error) => {
-            console.log('Error updating note:', error);
+            console.log('Error updating note:', error); // Logging any errors to the console //
             res.sendStatus(500);
         });
 });
@@ -96,7 +96,7 @@ router.delete('/delete/:id', rejectUnauthenticated, (req, res) => {
     pool.query(query, values)
         .then(res.sendStatus(200))
         .catch((error) => {
-            console.log('error deleting note', error);
+            console.log('error deleting note', error); // Logging any errors to the console //
         });
 });
 // End DELETE request for the Notes page // 

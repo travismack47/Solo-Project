@@ -21,7 +21,7 @@ router.get('/:trader_id', rejectUnauthenticated, (req, res) => {
       res.send(result.rows);
     })
     .catch((error) => {
-      console.log('Error getting quests', error);
+      console.log('Error getting quests', error); // Logging any errors to the console // 
       res.sendStatus(500);
     });
 });
@@ -43,7 +43,7 @@ router.post('/:id/complete', rejectUnauthenticated, (req, res) => {
       res.send(result.rows[0]);
     })
     .catch((error) => {
-      console.log('Error marking quest as complete', error);
+      console.log('Error marking quest as complete', error); // Logging any errors to the console //
       res.sendStatus(500);
     });
 });
