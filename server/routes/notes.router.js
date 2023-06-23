@@ -89,9 +89,9 @@ router.delete('/delete/:id', rejectUnauthenticated, (req, res) => {
     console.log(userId);
     const query = `
       DELETE FROM notes
-      WHERE "id" = $1 AND "user_id" = $2
+      WHERE "id" = $1 AND "user_id" = $2 
       RETURNING *;
-    `;
+    `; // Pool query to delete a note where the note ID matches the database and user Id matches the user who posted the note //
     const values = [noteId, userId];
     pool.query(query, values)
         .then(res.sendStatus(200))

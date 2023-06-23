@@ -13,6 +13,10 @@ const NoteItem = ({ note }) => {
     setIsEditable(true);
   };
 
+  const handleCancel = () => {
+    setIsEditable(false);
+  }
+
   const handleUpdate = () => { // Function dispatching update action when updated note is saved //
     dispatch({
       type: "UPDATE_NOTE",
@@ -60,9 +64,14 @@ const NoteItem = ({ note }) => {
       <TableCell>{moment(note.timestamp).calendar()}</TableCell> {/* Using moment.js to display timestamp in MM/DD/YYYY format */}
       <TableCell>
         {isEditable ? (
-          <Button variant="contained" color="success" onClick={handleUpdate}>
+          <>
+          <Button variant="contained" color="secondary" onClick={handleCancel}>
+            Cancel
+          </Button>
+          <Button variant="contained" color="primary" onClick={handleUpdate}>
             Save
           </Button>
+          </>
         ) : (
           <>
             <Button variant="contained" color="primary" onClick={handleEdit}> {/* Edit button calling the handleEdit function
