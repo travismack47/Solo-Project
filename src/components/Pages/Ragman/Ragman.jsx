@@ -1,28 +1,44 @@
 import React, { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import QuestItem from "../../QuestItem/QuestItem";
+import { TableContainer, Table, TableHead, TableRow, TableCell, TableBody } from "@mui/material"; // Importing MaterialUI for styling
 
+export default function Prapor() {
+  const dispatch = useDispatch();
+  const traderId = 7;
 
-export default function Ragman() {
-    const dispatch = useDispatch();
-    const traderId = 7; // Set the trader ID for Ragman //
+  useEffect(() => { // Runs the FETCH_TRADER_QUESTS action upon page re-render //
+    dispatch({ type: "FETCH_TRADER_QUESTS", payload: traderId });
+  }, []);
 
-    useEffect(() => {
-        dispatch({ type: 'FETCH_TRADER_QUESTS', payload: traderId });
-    }, [dispatch]);
+  const quests = useSelector((store) => store.quests); // Pulling quests from the Redux store // 
 
-    const quests = useSelector(store => store.quests)
+  const handleComplete = (questId) => { // Dispatching the MARK_COMPLETE action when a quest is marked complete //
+    dispatch({ type: "MARK_COMPLETE", payload: { id: questId } });
+  };
 
-
-    return (
-        <>
-            <div>
-                <h1>Ragman's Quests</h1>
-                {quests.map((quest) => ( // Mapping over quests object, importing QuestItem which appends indexed items to the dom and
-                    // checks if an entry exists for that quest inside the user_quests table. If it does, the quest is marked as 'complete' 
-                    <QuestItem key={quest.id} quest={quest} />
-                ))}
-            </div>
-        </>
-    );
+  return (
+    <>
+      <div>
+        <h1>Ragman's Quests</h1>
+        <TableContainer>
+          <Table>
+            <TableHead>
+              <TableRow>
+                <TableCell>Name</TableCell> {/* Headers for the table */}
+                <TableCell>Description</TableCell>
+                <TableCell>Mark Complete</TableCell>
+                <TableCell>Completed?</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {quests.map((quest) => ( // Mapping over quests and using the item ID as a key when rendering QuestItem component //
+                <QuestItem key={quest.id} quest={quest} handleComplete={handleComplete} />
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </div>
+    </>
+  );
 }
