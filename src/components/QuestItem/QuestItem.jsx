@@ -12,6 +12,7 @@ export default function QuestItem({ quest }) {
   const isComplete = !!quest.user_quest_id;
 
   return (
+    <>
     <TableRow key={quest.id}>
       <TableCell>{quest.name}</TableCell>
       <TableCell>{quest.description}</TableCell>
@@ -22,5 +23,6 @@ export default function QuestItem({ quest }) {
       </TableCell>
       <TableCell>{isComplete ? "Yes" : "No"}</TableCell>
     </TableRow>
+    </>
   );
 }

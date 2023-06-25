@@ -124,28 +124,36 @@ function App() {
           <ProtectedRoute exact path='/therapist'>
             <Therapist />
           </ProtectedRoute>
+
           <ProtectedRoute exact path='/notes'>
             <Notes />
           </ProtectedRoute>
+
           <ProtectedRoute exact path='/skier'>
             <Skier />
           </ProtectedRoute>
+
           <ProtectedRoute exact path ='/jaeger'>
             <Jaeger />
           </ProtectedRoute>
+
           <ProtectedRoute exact path='/peacekeeper'>
             <Peacekeeper />
           </ProtectedRoute>
+
           <ProtectedRoute exact path='/mechanic'>
             <Mechanic />
           </ProtectedRoute>
+
           <ProtectedRoute exact path='/ragman'>
             <Ragman /> 
           </ProtectedRoute>
+
           {/* If none of the other routes matched, we will show a 404. */}
           <Route>
             <h1>404</h1>
           </Route>
+
         </Switch>
         <Footer />
       </div>

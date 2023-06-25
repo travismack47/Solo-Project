@@ -6,12 +6,12 @@ import { put } from 'redux-saga/effects';
 function* fetchNotes(action) {
     try {
         const userId = action.payload;
-        const response = yield axios.get(`/api/notes/${userId}`);
+        const response = yield axios.get(`/api/notes/${userId}`); // GETs all notes for that specific user // 
         const notes = response.data;
         // Dispatch an action to store the notes in Redux //
         yield put({ type: 'SET_NOTES', payload: notes });
     } catch (error) {
-        console.log('error fetching notes:', error);
+        console.log('error fetching notes:', error); // Logging any errors to the console // 
     };
 };
 
@@ -24,7 +24,7 @@ function* addNote(action) {
         // Dispatch an action to fetch updated notes //
         yield put({ type: 'FETCH_NOTES', payload: userId });
     } catch (error) {
-        console.log('error adding a note', error);
+        console.log('error adding a note', error); // Logging any errors to the console //
     };
 };
 
@@ -37,7 +37,7 @@ function* updateNote(action) {
         // Dispatch an action to fetch the updated notes //
         yield put({ type: 'FETCH_NOTES', payload: userId });
     } catch (error) {
-        console.log('error updating a note', error);
+        console.log('error updating a note', error); // Logging any errors to the console //
     };
 };
 
@@ -50,7 +50,7 @@ function* deleteNote(action) {
         // Dispatch an action to fetch the updated notes // 
         yield put({ type: 'FETCH_NOTES' });
     } catch (error) {
-        console.log('error deleting a note', error);
+        console.log('error deleting a note', error); // Logging any errors to the console //
     };
 };
 

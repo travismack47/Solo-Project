@@ -35,6 +35,7 @@ const NoteItem = ({ note }) => {
   };
 
   return (
+    <>
     <TableRow>
       <TableCell>
         {isEditable ? ( // Conditional check to see if note is being edited or not. If it is, a text field will be displayed allowing
@@ -86,6 +87,7 @@ const NoteItem = ({ note }) => {
         )}
       </TableCell>
     </TableRow>
+    </>
   );
 };
 

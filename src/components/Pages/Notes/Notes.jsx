@@ -20,6 +20,7 @@ const Notes = () => {
   };
 
   return (
+    <>
     <Container className="mt-4"> 
       <h1>Create a Note</h1>
       <form>  {/* Creating a form for users to add a new note, input fields are for title/description */}
@@ -67,6 +68,7 @@ const Notes = () => {
         </Table>
       </TableContainer>
     </Container>
+    </>
   );
 };
 

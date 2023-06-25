@@ -1,68 +1,103 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import LogOutButton from '../LogOutButton/LogOutButton';
-import './Nav.css';
+import { Typography, Box, AppBar, Toolbar, Button, Modal, Menu, MenuItem } from '@mui/material'; // Importing MaterialUI components
 import { useSelector } from 'react-redux';
+import { useState } from 'react';
 
 function Nav() {
   const user = useSelector((store) => store.user);
+  const [isOpen, setIsOpen] = useState(false); // State for controlling the Modal open/close //
+  const [anchorEl, setAnchorEl] = useState(null); // State for the anchor element of the menu //
+
+  const handleOpen = (event) => { // Handles the opening of the dropdown menu //
+    setIsOpen(true);
+    setAnchorEl(event.currentTarget);
+  };
+
+  const handleClose = () => { // Handles closing of the Modal dropdown // 
+    setIsOpen(false);
+    setAnchorEl(null);
+  };
+
+  const handleMenuItemClick = () => { // Closes the Modal dropdown when a Trader is clicked //
+    handleClose();
+  };
 
   return (
-    <div className="nav">
-      <Link to="/home">
-        <h2 className="nav-title">Prime Solo Project</h2>
-      </Link>
-      <div>
-        {/* If no user is logged in, show these links */}
-        {!user.id && (
-          // If there's no user, show login/registration links
-          <Link className="navLink" to="/login">
-            Login / Register
+    <AppBar position="static"> 
+      <Toolbar>
+        <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
+          <Link to="/home" style={{ textDecoration: 'none', color: 'inherit' }}>
+            Tarkov Quest Tracker
           </Link>
-        )}
-
-        {/* If a user is logged in, show these links */}
-        {user.id && (
-          <>
-            <Link className="navLink" to="/user">
-              Home
-            </Link>
-            <Link className='navLink' to='/prapor'>
-              Prapor
-            </Link>
-            <Link className='navLink' to='/therapist'>
-              Therapist
-            </Link>
-            <Link className='navLink' to='/skier'>
-              Skier
-            </Link>
-            <Link className='navLink' to='/jaeger'>
-              Jaeger
-            </Link>
-            <Link className='navLink' to='/peacekeeper'>
-              Peacekeeper
-            </Link>
-            <Link className='navLink' to='/mechanic'>
-              Mechanic
-            </Link>
-            <Link className='navLink' to='/ragman'>
-              Ragman
-            </Link>
-            <Link className="navLink" to='/notes'>
-              Notes
-            </Link>
-            <Link className="navLink" to="/info">
-              Info Page
-            </Link>
-            <LogOutButton className="navLink" />
-          </>
-        )}
-
-        <Link className="navLink" to="/about">
-          About
-        </Link>
-      </div>
-    </div>
+        </Typography>
+        <Box>
+          {/* If no user is logged in, show login/register button */}
+          {!user.id && (
+            <Button color="inherit" component={Link} to="/login">
+              Login / Register
+            </Button>
+          )}
+          {/* If a user is logged in, show these links */}
+          {user.id && (
+            <>
+              <Button color="inherit" component={Link} to="/user">
+                Home
+              </Button>
+              <Button color="inherit" onClick={handleOpen}>
+                Traders
+              </Button>
+              {/* Modal for the dropdown menu */}
+              <Modal open={isOpen} onClose={handleClose}>
+                <Menu
+                  anchorEl={anchorEl} 
+                  open={isOpen} // Handles opening of the menu // 
+                  onClose={handleClose} // Handles closing of the menu //
+                  anchorOrigin={{ vertical: 'top', horizontal: 'right' }} // Origin menu point relative to Traders button //
+                  transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+                >
+                  {/* Menu items for each trader */}
+                  <MenuItem component={Link} to="/prapor" onClick={handleMenuItemClick}>
+                    Prapor
+                  </MenuItem>
+                  <MenuItem component={Link} to="/therapist" onClick={handleMenuItemClick}>
+                    Therapist
+                  </MenuItem>
+                  <MenuItem component={Link} to="/peacekeeper" onClick={handleMenuItemClick}>
+                    Peacekeeper
+                  </MenuItem>
+                  <MenuItem component={Link} to="/jaeger" onClick={handleMenuItemClick}>
+                    Jaeger
+                  </MenuItem>
+                  <MenuItem component={Link} to="/skier" onClick={handleMenuItemClick}>
+                    Skier
+                  </MenuItem>
+                  <MenuItem component={Link} to="/mechanic" onClick={handleMenuItemClick}>
+                    Mechanic
+                  </MenuItem>
+                  <MenuItem component={Link} to="/ragman" onClick={handleMenuItemClick}>
+                    Ragman
+                  </MenuItem>
+                </Menu>
+              </Modal>
+              <Button color="inherit" component={Link} to="/notes">
+                Notes
+              </Button>
+              <Button color="inherit" component={Link} to="/info">
+                Info Page
+              </Button>
+            </>
+          )}
+          {/* Common link for all users */}
+          <Button color="inherit" component={Link} to="/about">
+            About
+          </Button>
+          {/* If a user is logged in, show the logout button */}
+          {user.id && <LogOutButton color="inherit" />}
+        </Box>
+      </Toolbar>
+    </AppBar>
   );
 }
 
