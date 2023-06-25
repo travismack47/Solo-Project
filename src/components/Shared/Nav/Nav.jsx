@@ -2,13 +2,14 @@ import React from 'react';
 import { Link } from 'react-router-dom';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import { Typography, Box, AppBar, Toolbar, Button, Modal, Menu, MenuItem } from '@mui/material'; // Importing MaterialUI components
-import { useSelector } from 'react-redux';
+import { useSelector, useDispatch } from 'react-redux';
 import { useState } from 'react';
 
 function Nav() {
   const user = useSelector((store) => store.user);
   const [isOpen, setIsOpen] = useState(false); // State for controlling the Modal open/close //
   const [anchorEl, setAnchorEl] = useState(null); // State for the anchor element of the menu //
+  const dispatch = useDispatch();
 
   const handleOpen = (event) => { // Handles the opening of the dropdown menu //
     setIsOpen(true);
@@ -24,8 +25,12 @@ function Nav() {
     handleClose();
   };
 
+  const handleLogout = () => {
+    dispatch({ type: 'LOGOUT' });
+  };
+
   return (
-    <AppBar position="static"> 
+    <AppBar position="static">
       <Toolbar>
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
           <Link to="/home" style={{ textDecoration: 'none', color: 'inherit' }}>
@@ -51,7 +56,7 @@ function Nav() {
               {/* Modal for the dropdown menu */}
               <Modal open={isOpen} onClose={handleClose}>
                 <Menu
-                  anchorEl={anchorEl} 
+                  anchorEl={anchorEl}
                   open={isOpen} // Handles opening of the menu // 
                   onClose={handleClose} // Handles closing of the menu //
                   anchorOrigin={{ vertical: 'top', horizontal: 'right' }} // Origin menu point relative to Traders button //
@@ -84,9 +89,6 @@ function Nav() {
               <Button color="inherit" component={Link} to="/notes">
                 Notes
               </Button>
-              <Button color="inherit" component={Link} to="/info">
-                Info Page
-              </Button>
             </>
           )}
           {/* Common link for all users */}
@@ -94,7 +96,10 @@ function Nav() {
             About
           </Button>
           {/* If a user is logged in, show the logout button */}
-          {user.id && <LogOutButton color="inherit" />}
+          {user.id && <Button color="inherit" onClick={handleLogout} component={Link} to="/login">
+            Log Out
+          </Button>
+          }
         </Box>
       </Toolbar>
     </AppBar>
