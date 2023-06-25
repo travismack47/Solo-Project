@@ -1,8 +1,8 @@
 import React from "react";
-import { Grid, Typography, List, ListItem, ListItemText, Paper } from "@mui/material";
+import { Grid, Typography, List, ListItem, ListItemText, Paper, Link } from "@mui/material";
 
 const AboutPage = () => {
-  const items = [
+  const items = [ // Storing display text for DOM so Material code isn't so messy
     "JavaScript",
     "HTML",
     "CSS",
@@ -18,8 +18,8 @@ const AboutPage = () => {
   ];
 
   return (
-    <Grid container justifyContent="center">
-      <Grid item xs={12} md={8} lg={6}>
+    <Grid container justifyContent="center" spacing={2} sx={{ marginTop: "40px" }}>
+      <Grid item xs={12} md={6}>
         <Paper elevation={3} sx={{ padding: "24px" }}>
           <Typography variant="h4" align="center" gutterBottom>
             Languages/Programs/Packages/Libraries Used:
@@ -31,6 +31,18 @@ const AboutPage = () => {
               </ListItem>
             ))}
           </List>
+        </Paper>
+      </Grid>
+      <Grid item xs={12}>
+        <Paper elevation={3} sx={{ padding: "24px" }}>
+          <Typography variant="h4" align="center" gutterBottom>
+            <Link href="https://github.com/travismack47" target="_blank" rel="noopener">
+              GitHub
+            </Link>
+          </Typography>
+          <Typography variant="h4" align="center" gutterBottom>
+            Contact info: travismack47@protonmail.com
+          </Typography>
         </Paper>
       </Grid>
     </Grid>
