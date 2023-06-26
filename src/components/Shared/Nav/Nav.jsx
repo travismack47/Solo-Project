@@ -63,26 +63,26 @@ function Nav() {
                   transformOrigin={{ vertical: 'top', horizontal: 'right' }}
                 >
                   {/* Menu items for each trader */}
-                  <MenuItem component={Link} to="/prapor" onClick={handleMenuItemClick}>
-                    Prapor
-                  </MenuItem>
-                  <MenuItem component={Link} to="/therapist" onClick={handleMenuItemClick}>
-                    Therapist
-                  </MenuItem>
-                  <MenuItem component={Link} to="/peacekeeper" onClick={handleMenuItemClick}>
-                    Peacekeeper
-                  </MenuItem>
                   <MenuItem component={Link} to="/jaeger" onClick={handleMenuItemClick}>
                     Jaeger
-                  </MenuItem>
-                  <MenuItem component={Link} to="/skier" onClick={handleMenuItemClick}>
-                    Skier
                   </MenuItem>
                   <MenuItem component={Link} to="/mechanic" onClick={handleMenuItemClick}>
                     Mechanic
                   </MenuItem>
+                  <MenuItem component={Link} to="/peacekeeper" onClick={handleMenuItemClick}>
+                    Peacekeeper
+                  </MenuItem>
+                  <MenuItem component={Link} to="/prapor" onClick={handleMenuItemClick}>
+                    Prapor
+                  </MenuItem>
                   <MenuItem component={Link} to="/ragman" onClick={handleMenuItemClick}>
                     Ragman
+                  </MenuItem>
+                  <MenuItem component={Link} to="/skier" onClick={handleMenuItemClick}>
+                    Skier
+                  </MenuItem>
+                  <MenuItem component={Link} to="/therapist" onClick={handleMenuItemClick}>
+                    Therapist
                   </MenuItem>
                 </Menu>
               </Modal>
