@@ -12,7 +12,7 @@ export default function QuestItem({ quest }) {
   const isComplete = !!quest.user_quest_id;
 
   return (
-    <>
+    <> {/* Table for displaying the list of quests */}
     <TableRow key={quest.id}>
       <TableCell>{quest.name}</TableCell>
       <TableCell>{quest.description}</TableCell>
@@ -21,7 +21,8 @@ export default function QuestItem({ quest }) {
           Mark Complete
         </Button>
       </TableCell>
-      <TableCell>{isComplete ? "Yes" : "No"}</TableCell>
+      <TableCell>{isComplete ? "✅" : "🚫"}</TableCell> {/* Conditionally checking if a user_quest id exists for that quest,
+      meaning it has been 'completed' */}
     </TableRow>
     </>
   );
