@@ -21,7 +21,7 @@ const AboutPage = () => {
     <Grid container justifyContent="center" spacing={2} sx={{ marginTop: "40px" }}>
       {/* Grid item for languages/programs/packages/libraries */}
       <Grid item xs={12} md={6}>
-        <Paper elevation={3} sx={{ padding: "24px" }}>
+        <Paper elevation={3} sx={{ padding: "10px" }}>
           <Typography variant="h4" align="center" gutterBottom>
             Languages/Programs/Packages/Libraries Used:
           </Typography>
@@ -37,7 +37,7 @@ const AboutPage = () => {
       </Grid>
       {/* Grid item for GitHub and contact info */}
       <Grid item xs={12}>
-        <Paper elevation={3} sx={{ padding: "24px" }}>
+        <Paper elevation={3} sx={{ padding: "10px" }}>
           <Typography variant="h4" align="center" gutterBottom>
             {/* GitHub link */}
             <Link href="https://github.com/travismack47" target="_blank" rel="noopener">

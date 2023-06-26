@@ -7,14 +7,18 @@ export default function Prapor() {
   const dispatch = useDispatch();
   const traderId = 1;
 
-  useEffect(() => { // Runs the FETCH_TRADER_QUESTS action upon page re-render //
+  useEffect(() => { // Runs the FETCH_TRADER_QUESTS action using trader ID to filter quests upon page re-render //
     dispatch({ type: "FETCH_TRADER_QUESTS", payload: traderId });
   }, []);
 
   const quests = useSelector((store) => store.quests); // Pulling quests from the Redux store // 
 
   const handleComplete = (questId) => { // Dispatching the MARK_COMPLETE action when a quest is marked complete //
-    dispatch({ type: "MARK_COMPLETE", payload: { id: questId } });
+    dispatch({ type: "MARK_COMPLETE", payload: { questId: questId } });
+  };
+
+  const handleUndo = (questId) => {
+    dispatch({ type: 'UNDO_COMPLETION', payload: { questId: questId } });
   };
 
   return (
@@ -22,10 +26,10 @@ export default function Prapor() {
       <div>
         <h1>Prapor's Quests</h1>
         <TableContainer>
-          <Table>
+          <Table> {/* Table element for displaying quests */}
             <TableHead>
               <TableRow>
-                <TableCell>Name</TableCell> {/* Headers for the table */}
+                <TableCell>Name</TableCell> {/* Headers for the table columns */}
                 <TableCell>Description</TableCell>
                 <TableCell>Mark Complete</TableCell>
                 <TableCell>Completed?</TableCell>
@@ -33,7 +37,7 @@ export default function Prapor() {
             </TableHead>
             <TableBody>
               {quests.map((quest) => ( // Mapping over quests and using the item ID as a key when rendering QuestItem component //
-                <QuestItem key={quest.id} quest={quest} handleComplete={handleComplete} />
+                <QuestItem key={quest.id} quest={quest} handleComplete={handleComplete} handleUndo={handleUndo} traderId={traderId}/>
               ))}
             </TableBody>
           </Table>

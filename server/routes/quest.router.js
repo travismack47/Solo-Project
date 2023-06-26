@@ -13,8 +13,8 @@ router.get('/:trader_id', rejectUnauthenticated, (req, res) => {
   FROM quests 
   LEFT JOIN user_quests ON user_quests.quest_id = quests.id AND user_quests.user_id = $1
   WHERE quests.trader_id = $2;
-`; 
-  const values = [req.user.id, traderId]; 
+`;
+  const values = [req.user.id, traderId];
   pool.query(query, values)
     .then((result) => {
       console.log(result);
@@ -31,6 +31,8 @@ router.get('/:trader_id', rejectUnauthenticated, (req, res) => {
 router.post('/:id/complete', rejectUnauthenticated, (req, res) => {
   const userId = req.user.id;
   const questId = req.params.id;
+  console.log(userId);
+  console.log(questId);
   const query = `
     INSERT INTO user_quests ("user_id", "quest_id")
     VALUES ($1, $2)
@@ -49,6 +51,19 @@ router.post('/:id/complete', rejectUnauthenticated, (req, res) => {
 });
 // End POST request for marking quests as complete on the Traders page // 
 
+router.delete('/:id/undo', rejectUnauthenticated, (req, res) => {
+ const userId = req.user.id;
+ const questId = req.params.id
+  const query = 'DELETE FROM user_quests WHERE user_id = $1 AND quest_id = $2';
+  const values = [userId, questId];
 
-
+  pool.query(query, values)
+    .then(() => {
+      res.sendStatus(200);
+    })
+    .catch((error) => {
+      console.log('error deleting quest completion entry', error);
+      res.sendStatus(500);
+    });
+});
 module.exports = router;

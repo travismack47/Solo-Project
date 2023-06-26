@@ -1,36 +1,35 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import LogOutButton from '../LogOutButton/LogOutButton';
 import { Typography, Box, AppBar, Toolbar, Button, Modal, Menu, MenuItem } from '@mui/material'; // Importing MaterialUI components
 import { useSelector, useDispatch } from 'react-redux';
 import { useState } from 'react';
 
 function Nav() {
-  const user = useSelector((store) => store.user);
+  const user = useSelector((store) => store.user); // Pulling users list from the store //
   const [isOpen, setIsOpen] = useState(false); // State for controlling the Modal open/close //
   const [anchorEl, setAnchorEl] = useState(null); // State for the anchor element of the menu //
   const dispatch = useDispatch();
 
   const handleOpen = (event) => { // Handles the opening of the dropdown menu //
     setIsOpen(true);
-    setAnchorEl(event.currentTarget);
+    setAnchorEl(event.currentTarget); // Sets the modal dropdown to open up where the Traders button element is located //
   };
 
   const handleClose = () => { // Handles closing of the Modal dropdown // 
     setIsOpen(false);
-    setAnchorEl(null);
+    setAnchorEl(null); 
   };
 
   const handleMenuItemClick = () => { // Closes the Modal dropdown when a Trader is clicked //
     handleClose();
   };
 
-  const handleLogout = () => {
+  const handleLogout = () => { // Handles logging the user out when log out is clicked //
     dispatch({ type: 'LOGOUT' });
   };
 
   return (
-    <AppBar position="static">
+    <AppBar position="static"> {/* Keeps the nav bar located at the top of the page */}
       <Toolbar>
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
           <Link to="/home" style={{ textDecoration: 'none', color: 'inherit' }}>
