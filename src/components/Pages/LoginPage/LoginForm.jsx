@@ -2,6 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { TextField, Button, Typography } from '@mui/material';
+import './LoginPage.css'
 
 function LoginForm() {
   const [username, setUsername] = useState('');
