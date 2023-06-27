@@ -1,39 +1,54 @@
 import React from 'react';
-import LogOutButton from '../../Shared/LogOutButton/LogOutButton';
 import { useSelector } from 'react-redux';
-import { Typography, Box, Button } from '@mui/material';
+import { Typography, Button } from '@mui/material';
 import { useDispatch } from 'react-redux';
+import './UserPage.css';
+import Swal from 'sweetalert2';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+
 function UserPage() {
-  // this component doesn't do much to start, just renders some user reducer info to the DOM
   const user = useSelector((store) => store.user);
   const dispatch = useDispatch();
-
+  const history = useHistory();
+  
   const handleLogout = () => {
-    dispatch({ type: 'LOGOUT' });
+    Swal.fire({
+      title: 'Are you sure you want to log out?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, log out!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Logged out',
+          'You have been successfully logged out',
+          'success'
+        ).then(() => {
+          dispatch({ type: 'LOGOUT' });
+          history.push('/login');
+        });
+      }
+    });
   };
 
   return (
-    <Box
-      alignItems="center"
-      justifyContent="center"
-    >
-      <Box textAlign="center">
-        {/* Welcome message */}
+    <div className='login-page'>
+      <div className='background-image2' />
+      <div className="container"> {/* Use the 'container' class here */}
         <Typography variant="h2" gutterBottom>
           Welcome, {user.username}!
         </Typography>
-        {/* User ID */}
         <Typography variant="body1" gutterBottom>
           Your ID is: {user.id}
         </Typography>
-        {/* Log out button */}
         <Button variant="contained" color="primary" onClick={handleLogout} type='logout'>
-        Log Out
+          Log Out
         </Button>
-      </Box>
-    </Box>
+      </div>
+    </div>
   );
 }
 
-// this allows us to use <UserPage /> in other components
 export default UserPage;
