@@ -54,16 +54,16 @@ export default function QuestItem({ quest, traderId }) {
 
   return (
     <>
-      <TableRow key={quest.id}>
+      <TableRow key={quest.id} style={{ height: 50 }}>
         <TableCell>{quest.name}</TableCell> {/* Displaying quest name */}
         <TableCell>{quest.description}</TableCell> {/* Displaying quest description */}
         <TableCell>
           {isComplete ? (
-            <Button variant="contained" color="primary" onClick={swal2}>
+            <Button variant="contained" color="primary" sx={{ width: 120, height: 50 }} onClick={swal2}>
               Undo
             </Button>
           ) : (
-            <Button variant="contained" color="primary" onClick={swal}>
+            <Button variant="contained" color="primary" sx={{ width: 120, height: 50 }} onClick={swal}>
               Mark Complete
             </Button>
           )}

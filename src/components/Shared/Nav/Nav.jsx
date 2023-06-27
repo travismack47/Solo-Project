@@ -3,13 +3,16 @@ import { Link } from 'react-router-dom';
 import { Typography, Box, AppBar, Toolbar, Button, Modal, Menu, MenuItem } from '@mui/material'; // Importing MaterialUI components
 import { useSelector, useDispatch } from 'react-redux';
 import { useState } from 'react';
+import Swal from 'sweetalert2';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 
 function Nav() {
   const user = useSelector((store) => store.user); // Pulling users list from the store //
   const [isOpen, setIsOpen] = useState(false); // State for controlling the Modal open/close //
   const [anchorEl, setAnchorEl] = useState(null); // State for the anchor element of the menu //
   const dispatch = useDispatch();
-
+  const history = useHistory();
+  
   const handleOpen = (event) => { // Handles the opening of the dropdown menu //
     setIsOpen(true);
     setAnchorEl(event.currentTarget); // Sets the modal dropdown to open up where the Traders button element is located //
@@ -24,9 +27,28 @@ function Nav() {
     handleClose();
   };
 
-  const handleLogout = () => { // Handles logging the user out when log out is clicked //
-    dispatch({ type: 'LOGOUT' });
+  const handleLogout = () => {
+    Swal.fire({
+      title: 'Are you sure you want to log out?',
+      icon: 'warning',
+      showCancelButton: true,
+      confirmButtonColor: '#3085d6',
+      cancelButtonColor: '#d33',
+      confirmButtonText: 'Yes, log out!'
+    }).then((result) => {
+      if (result.isConfirmed) {
+        Swal.fire(
+          'Logged out',
+          'You have been successfully logged out',
+          'success'
+        ).then(() => {
+          dispatch({ type: 'LOGOUT' });
+          history.push('/login');
+        });
+      }
+    });
   };
+
 
   return (
     <AppBar position="static"> {/* Keeps the nav bar located at the top of the page */}
@@ -95,7 +117,7 @@ function Nav() {
             About
           </Button>
           {/* If a user is logged in, show the logout button */}
-          {user.id && <Button color="inherit" onClick={handleLogout} component={Link} to="/login">
+          {user.id && <Button color="inherit" onClick={handleLogout}>
             Log Out
           </Button>
           }

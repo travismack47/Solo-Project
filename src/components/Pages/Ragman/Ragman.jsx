@@ -25,20 +25,19 @@ export default function Prapor() {
     <>
       <div>
         <h1>Ragman's Quests</h1>
-        <TableContainer>
+        <TableContainer sx={{ width: 1300, margin: '0 auto' }}>
           <Table> {/* Table element for displaying quests */}
             <TableHead>
               <TableRow>
-                <TableCell>Name</TableCell> {/* Headers for the table */}
-                <TableCell>Description</TableCell>
+                <TableCell>Name</TableCell> {/* Headers for the table columns */}
+                <TableCell sx={{ maxWidth: 700}}>Description</TableCell>                
                 <TableCell>Mark Complete</TableCell>
                 <TableCell>Completed?</TableCell>
               </TableRow>
             </TableHead>
             <TableBody>
               {quests.map((quest) => ( // Mapping over quests and using the item ID as a key when rendering QuestItem component //
-                <QuestItem key={quest.id} quest={quest} handleComplete={handleComplete} handleUndo={handleUndo}
-                traderId={traderId}/>
+                <QuestItem key={quest.id} quest={quest} handleComplete={handleComplete} handleUndo={handleUndo} traderId={traderId}/>
               ))}
             </TableBody>
           </Table>

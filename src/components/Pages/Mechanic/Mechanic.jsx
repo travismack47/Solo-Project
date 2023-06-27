@@ -25,12 +25,12 @@ export default function Mechanic() {
     <>
       <div>
         <h1>Mechanic's Quests</h1>
-        <TableContainer>
+        <TableContainer sx={{ width: 1300, margin: '0 auto' }}>
           <Table> {/* Table element for displaying quests */}
             <TableHead>
               <TableRow>
-                <TableCell>Name</TableCell> {/* Headers for the table */}
-                <TableCell>Description</TableCell>
+                <TableCell>Name</TableCell> {/* Headers for the table columns */}
+                <TableCell sx={{ maxWidth: 700}}>Description</TableCell>
                 <TableCell>Mark Complete</TableCell>
                 <TableCell>Completed?</TableCell>
               </TableRow>

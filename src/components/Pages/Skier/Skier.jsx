@@ -26,26 +26,24 @@ export default function Skier() {
         <>
             <div>
                 <h1>Skier's Quests</h1>
-                <TableContainer>
-                    <Table> {/* Table element for displaying quests */}
-                        <TableHead>
-                            <TableRow>
-                                <TableCell>Name</TableCell> {/* Headers for the table */}
-                                <TableCell>Description</TableCell>
-                                <TableCell>Mark Complete</TableCell>
-                                <TableCell>Completed?</TableCell>
-                            </TableRow>
-                        </TableHead>
-                        <TableBody>
-                            {quests.map((quest) => ( // Mapping over quests and using the item ID as a key when rendering 
-                            // QuestItem component //
-                                <QuestItem key={quest.id} quest={quest} handleComplete={handleComplete} handleUndo={handleUndo}
-                                traderId={traderId}/>
-                            ))}
-                        </TableBody>
-                    </Table>
-                </TableContainer>
-            </div>
-        </>
+                <TableContainer sx={{ width: 1300, margin: '0 auto' }}>
+          <Table> {/* Table element for displaying quests */}
+            <TableHead>
+              <TableRow>
+                <TableCell>Name</TableCell> {/* Headers for the table columns */}
+                <TableCell sx={{ maxWidth: 700}}>Description</TableCell>
+                <TableCell>Mark Complete</TableCell>
+                <TableCell>Completed?</TableCell>
+              </TableRow>
+            </TableHead>
+            <TableBody>
+              {quests.map((quest) => ( // Mapping over quests and using the item ID as a key when rendering QuestItem component //
+                <QuestItem key={quest.id} quest={quest} handleComplete={handleComplete} handleUndo={handleUndo} traderId={traderId}/>
+              ))}
+            </TableBody>
+          </Table>
+        </TableContainer>
+      </div>
+    </>
     );
 }

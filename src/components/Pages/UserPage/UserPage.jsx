@@ -27,7 +27,9 @@ function UserPage() {
           Your ID is: {user.id}
         </Typography>
         {/* Log out button */}
-        <Button variant="contained" color="primary" onClick={handleLogout}/>
+        <Button variant="contained" color="primary" onClick={handleLogout} type='logout'>
+        Log Out
+        </Button>
       </Box>
     </Box>
   );

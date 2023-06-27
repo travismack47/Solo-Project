@@ -10,36 +10,35 @@ export default function Peacekeeper() {
 
     useEffect(() => { // Runs the FETCH_TRADER_QUESTS action using trader ID to filter quests upon page re-render //
         dispatch({ type: "FETCH_TRADER_QUESTS", payload: traderId });
-      }, []);
-    
-      const quests = useSelector((store) => store.quests); // Pulling quests from the Redux store // 
-    
-      const handleComplete = (questId) => { // Dispatching the MARK_COMPLETE action when a quest is marked complete //
+    }, []);
+
+    const quests = useSelector((store) => store.quests); // Pulling quests from the Redux store // 
+
+    const handleComplete = (questId) => { // Dispatching the MARK_COMPLETE action when a quest is marked complete //
         dispatch({ type: "MARK_COMPLETE", payload: { questId: questId } });
-      };
-    
-      const handleUndo = (questId) => {
+    };
+
+    const handleUndo = (questId) => {
         dispatch({ type: 'UNDO_COMPLETION', payload: { questId: questId } });
-      };
+    };
 
     return (
         <>
             <div>
                 <h1>Peacekeeper's Quests</h1>
-                <TableContainer>
+                <TableContainer sx={{ width: 1300, margin: '0 auto' }}>
                     <Table> {/* Table element for displaying quests */}
                         <TableHead>
                             <TableRow>
-                                <TableCell>Name</TableCell> {/* Headers for the table */}
-                                <TableCell>Description</TableCell>
+                                <TableCell>Name</TableCell> {/* Headers for the table columns */}
+                                <TableCell sx={{ maxWidth: 700 }}>Description</TableCell>
                                 <TableCell>Mark Complete</TableCell>
                                 <TableCell>Completed?</TableCell>
                             </TableRow>
                         </TableHead>
                         <TableBody>
                             {quests.map((quest) => ( // Mapping over quests and using the item ID as a key when rendering QuestItem component //
-                                <QuestItem key={quest.id} quest={quest} handleComplete={handleComplete} handleUndo={handleUndo}
-                                traderId={traderId}/>
+                                <QuestItem key={quest.id} quest={quest} handleComplete={handleComplete} handleUndo={handleUndo} traderId={traderId} />
                             ))}
                         </TableBody>
                     </Table>
