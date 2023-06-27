@@ -17,7 +17,7 @@ function* markQuestComplete(action) { // Handles marking a quest complete (addin
   try {
     const { questId, traderId } = action.payload
     yield axios.post(`/api/quests/${questId}/complete`, { traderId }); // POST request for posting to database //
-    yield put({ type: 'FETCH_TRADER_QUESTS', payload: traderId })
+    yield put({ type: 'FETCH_TRADER_QUESTS', payload: traderId }) // Calling FETCH_TRADER_QUESTS to retrieve the updated list //
   } catch (error) {
     console.log('error marking complete', error); // Logging any errors to the console //
   }
@@ -26,8 +26,8 @@ function* markQuestComplete(action) { // Handles marking a quest complete (addin
 function* undoMarkQuestComplete(action) {
   try {
     const { questId, traderId } = action.payload;
-    yield axios.delete(`/api/quests/${questId}/undo`, { questId });
-    yield put({ type: 'FETCH_TRADER_QUESTS', payload: traderId });
+    yield axios.delete(`/api/quests/${questId}/undo`, { questId }); // DELETE request for removing a quest from user_quests table //
+    yield put({ type: 'FETCH_TRADER_QUESTS', payload: traderId }); // Calling FETCH_TRADER_QUESTS to retrieve the updated list //
   } catch (error) {
     console.log('error undoing quest completion entry', error);
   }

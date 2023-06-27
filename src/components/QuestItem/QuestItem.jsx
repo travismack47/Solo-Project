@@ -1,14 +1,14 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { TableCell, TableRow, Button } from "@mui/material";
-import Swal from "sweetalert2";
+import { TableCell, TableRow, Button } from "@mui/material"; // Imports from Material-UI //
+import Swal from "sweetalert2"; // Importing Sweet Alert //
 
 export default function QuestItem({ quest, traderId }) {
   const dispatch = useDispatch();
 
   const handleComplete = () => {
-    dispatch({ type: 'MARK_COMPLETE', payload: { questId: quest.id, traderId: traderId } }); // Dispatching mark complete action which adds the quest to the user_quests table, meaning it has been completed
-  };
+    dispatch({ type: 'MARK_COMPLETE', payload: { questId: quest.id, traderId: traderId } }); 
+  }; // Dispatching mark complete action which adds the quest to the user_quests table, meaning it has been completed //
 
   const handleUndo = () => {
     dispatch({
@@ -17,7 +17,7 @@ export default function QuestItem({ quest, traderId }) {
     });
   };
 
-  const swal = () => {
+  const swal = () => { // Sweet alert that pops up when a user clicks mark complete, having then confirm the completion //
     Swal.fire({
       title: 'Are you sure?',
       icon: 'warning',
@@ -31,13 +31,13 @@ export default function QuestItem({ quest, traderId }) {
           'Completed!',
           'Your quest has been marked complete.',
           'success',
-          handleComplete()
+          handleComplete() // Marks the quest complete if the user confirms in the alert //
         )
       }
     })
   }
 
-  const swal2 = () => {
+  const swal2 = () => { // Sweet alert that pops up when a user presses undo on a completed quest // 
     Swal.fire({
       title: 'Quest completion status has been reversed',
       showClass: {
@@ -47,7 +47,7 @@ export default function QuestItem({ quest, traderId }) {
         popup: 'animate__animated animate__fadeOutUp'
       }
     })
-    handleUndo()
+    handleUndo() // Reverses completed status of the quest // 
   }
   
   const isComplete = !!quest.user_quest_id; // Checking if a user_quest id exists for that quest, meaning it has been completed
