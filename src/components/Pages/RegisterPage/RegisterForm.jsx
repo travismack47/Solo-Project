@@ -85,6 +85,17 @@ function RegisterForm() {
         >
           Register
         </Button>
+        <h3>Already a member?</h3>
+      <Button
+        variant="contained"
+        color="primary"
+        onClick={() => {
+          history.push('/login');
+        }}
+        sx={{ marginTop: '10px' }}
+      >
+        Login
+      </Button>
       </div>
     </Box>
   );

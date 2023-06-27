@@ -7,20 +7,12 @@ function RegisterPage() {
   const history = useHistory();
 
   return (
+    <div className='register-page'>
+      <div className='background-image3' />
     <Container maxWidth="sm" sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', padding: '20px' }}>
       <RegisterForm />
-
-      <Button
-        variant="contained"
-        color="primary"
-        onClick={() => {
-          history.push('/login');
-        }}
-        sx={{ marginTop: '10px' }}
-      >
-        Login
-      </Button>
     </Container>
+    </div>
   );
 }
 
