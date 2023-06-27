@@ -12,7 +12,7 @@ function Nav() {
   const [anchorEl, setAnchorEl] = useState(null); // State for the anchor element of the menu //
   const dispatch = useDispatch();
   const history = useHistory();
-  
+
   const handleOpen = (event) => { // Handles the opening of the dropdown menu //
     setIsOpen(true);
     setAnchorEl(event.currentTarget); // Sets the modal dropdown to open up where the Traders button element is located //
@@ -55,7 +55,7 @@ function Nav() {
       <Toolbar>
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
           <Link to="/home" style={{ textDecoration: 'none', color: 'inherit' }}>
-            Tarkov Quest Tracker
+            Tarkov Tracker
           </Link>
         </Typography>
         <Box>
