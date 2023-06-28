@@ -10,13 +10,15 @@ function LoginPage() {
   return (
     <div className="login-page">
       <div className="background-image" />
-      <Container maxWidth="sm" sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'center', height: '100vh' }}>
+      <Container maxWidth="sm" sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', 
+      justifyContent: 'flex-start', height: '100vh' }}>
         <Box
           sx={{
             backgroundColor: 'rgba(255, 255, 255, 0.85)',
             padding: '20px',
             borderRadius: '10px',
             boxShadow: '0px 2px 6px rgba(0, 0, 0, 0.3)',
+            marginTop: '30px'
           }}
         >
           <LoginForm />

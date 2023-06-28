@@ -1,12 +1,15 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import { Box, TextField, Button, Typography } from '@mui/material';
-
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import './RegisterPage.css';
+ 
 function RegisterForm() {
   const [username, setUsername] = useState('');
   const [password, setPassword] = useState('');
   const errors = useSelector((store) => store.errors);
   const dispatch = useDispatch();
+  const history = useHistory();
 
   const registerUser = (event) => {
     event.preventDefault();
@@ -30,6 +33,7 @@ function RegisterForm() {
         backgroundColor: 'rgba(255, 255, 255, 0.85)',
         borderRadius: '10px',
         boxShadow: '0px 2px 6px rgba(0, 0, 0, 0.3)',
+        marginTop: '30px'
       }}
       component="form"
       onSubmit={registerUser}

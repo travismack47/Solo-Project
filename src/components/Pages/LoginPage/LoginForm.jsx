@@ -28,7 +28,7 @@ function LoginForm() {
 
   return (
     <form onSubmit={login} sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%', mt: 4 }}>
-      <Typography variant="h2" sx={{ mb: 4 }}>
+      <Typography variant="h6" align='center'>
         Login
       </Typography>
       {errors.loginMessage && (

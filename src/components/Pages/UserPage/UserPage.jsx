@@ -36,12 +36,9 @@ function UserPage() {
   return (
     <div className='login-page'>
       <div className='background-image2' />
-      <div className="container"> {/* Use the 'container' class here */}
-        <Typography variant="h2" gutterBottom>
+      <div className="container"> 
+        <Typography variant="h2" gutterBottom color={'white'}>
           Welcome, {user.username}!
-        </Typography>
-        <Typography variant="body1" gutterBottom>
-          Your ID is: {user.id}
         </Typography>
         <Button variant="contained" color="primary" onClick={handleLogout} type='logout'>
           Log Out

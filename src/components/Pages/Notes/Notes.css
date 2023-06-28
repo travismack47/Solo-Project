@@ -1,0 +1,19 @@
+.notes-page {
+    position: relative;
+    min-height: calc(100vh - 30px); /* Subtract the height of the nav bar */
+    overflow: hidden;
+    margin-top: -30px; /* Adjust this value to remove the white space below the nav bar */
+  }
+  
+  .background-imagenotes {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh; /* Use 100vh to fill the entire viewport height */
+    background-image: url('/Users/travismack/Desktop/Homework/Solo-Project/public/images/factorymap.png');
+    background-size: cover;
+    background-position: center;
+    z-index: -50;
+  }
+  

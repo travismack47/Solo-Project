@@ -25,7 +25,6 @@ import Ragman from './Pages/Ragman/Ragman';
 import Notes from './Pages/Notes/Notes';
 import './App.css';
 import Nav from './Shared/Nav/Nav';
-import Footer from './Shared/Footer/Footer';
 // End component imports //
 function App() {
   const dispatch = useDispatch();
