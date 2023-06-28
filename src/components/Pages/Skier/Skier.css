@@ -1,11 +1,11 @@
 html,
 body,
-.prapor-page {
+.skier-page {
   height: 100%;
   margin: 0;
 }
 
-.prapor-page {
+.skier-page {
   display: flex;
   flex-direction: column;
   justify-content: center;
@@ -13,13 +13,13 @@ body,
   min-height: 100vh;
 }
 
-.background-prapor {
+.background-skier {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background-image: url('/Users/travismack/Desktop/Homework/Solo-Project/public/images/praportarkov.png');
+  background-image: url('/Users/travismack/Desktop/Homework/Solo-Project/public/images/skiertarkov.png');
   background-size: cover;
   background-position: center;
   z-index: -50;

@@ -30,7 +30,7 @@ export default function Prapor() {
             <div className="prapor-page">
                 <div className="background-prapor" />
                 <div style={{ display: "flex", flexDirection: "column" }}>
-                    <TableContainer component={Paper} elevation={3} sx={{ width: 1300, margin: "0 auto", backgroundColor: "rgba(255, 255, 255, 0.5)" }}>
+                    <TableContainer component={Paper} elevation={3} sx={{ width: 1300, margin: "0 auto", backgroundColor: "rgba(255, 255, 255, 0.75)" }}>
                         <Table>
                             <TableHead>
                                 <TableRow>
@@ -54,6 +54,7 @@ export default function Prapor() {
                             page={currentPage}
                             onChange={handleChangePage}
                             color="primary"
+                            sx={{ color: 'rgba(255, 255, 255, 0.8)' }}
                         />
                     </div>
                 </div>
