@@ -26,9 +26,9 @@ export default function Therapist() {
     };
 
     return (
-        <>
+        <div className="background-therapist" >
             <div className="therapist-page">
-                <div className="background-therapist" />
+               
                 <div style={{ display: "flex", flexDirection: "column" }}>
                     <TableContainer component={Paper} elevation={3} sx={{ width: 1300, margin: "0 auto", backgroundColor: "rgba(255, 255, 255, 0.75)" }}>
                         <Table>
@@ -59,6 +59,6 @@ export default function Therapist() {
                     </div>
                 </div>
             </div>
-        </>
+        </div>
     );
 };

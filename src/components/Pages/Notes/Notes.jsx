@@ -50,7 +50,6 @@ const Notes = () => {
       <div className="notes-page">
         <div className="background-imagenotes" />
       <Container className="mt-4">
-        <h1>Create a Note</h1>
         <form>
           {/* Input field for note title */}
           <TextField
@@ -79,8 +78,6 @@ const Notes = () => {
             Save Note
           </Button>
         </form>
-
-        <h2 className="mt-4">Notes</h2>
         
         {/* Pagination */}
         <Pagination

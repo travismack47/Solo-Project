@@ -26,9 +26,8 @@ export default function Skier() {
     };
 
     return (
-        <>
+      <div className="background-skier">
             <div className="skier-page">
-                <div className="background-skier" />
                 <div style={{ display: "flex", flexDirection: "column" }}>
                     <TableContainer component={Paper} elevation={3} sx={{ width: 1300, margin: "0 auto", backgroundColor: "rgba(255, 255, 255, 0.75)" }}>
                         <Table>
@@ -59,6 +58,6 @@ export default function Skier() {
                     </div>
                 </div>
             </div>
-        </>
+        </div>
     );
 };

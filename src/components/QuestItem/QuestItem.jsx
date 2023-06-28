@@ -53,7 +53,6 @@ export default function QuestItem({ quest, traderId }) {
   const isComplete = !!quest.user_quest_id; // Checking if a user_quest id exists for that quest, meaning it has been completed
 
   return (
-    <>
       <TableRow key={quest.id} style={{ height: 50 }}>
         <TableCell>{quest.name}</TableCell> {/* Displaying quest name */}
         <TableCell>{quest.description}</TableCell> {/* Displaying quest description */}
@@ -64,12 +63,11 @@ export default function QuestItem({ quest, traderId }) {
             </Button>
           ) : (
             <Button variant="contained" color="primary" sx={{ width: 120, height: 50 }} onClick={swal}>
-              Mark Complete
+             Complete
             </Button>
           )}
         </TableCell>
         <TableCell>{isComplete ? "✅" : "🚫"}</TableCell> {/* Conditionally checking if the quest is complete and displaying appropriate symbol */}
       </TableRow>
-    </>
   );
 }

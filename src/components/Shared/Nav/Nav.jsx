@@ -51,7 +51,7 @@ function Nav() {
 
 
   return (
-    <AppBar position="static"> {/* Keeps the nav bar located at the top of the page */}
+    <AppBar position="sticky"> {/* Keeps the nav bar located at the top of the page */}
       <Toolbar>
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
           <Link to="/home" style={{ textDecoration: 'none', color: 'inherit' }}>
