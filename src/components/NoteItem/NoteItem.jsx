@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { TableRow, TableCell, TextField, Button, Modal, Box } from "@mui/material";
+import { TableRow, TableCell, TextField, Button, Modal, Box } from "@mui/material"; // Material-UI imports //
 import moment from "moment"; // Moment.js import for displaying formatted timestamps
 import Swal from "sweetalert2";
 
@@ -52,7 +52,7 @@ const NoteItem = ({ note }) => {
           'Deleted!',
           'Your note has been deleted.',
           'success',
-          handleDelete()
+          handleDelete() // Handles deleting the note if user confirms the delete on the alert //
         );
       };
     });
