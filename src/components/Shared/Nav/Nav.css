@@ -24,7 +24,6 @@
 .navLink {
   display: inline-block;
   color: #f2f2f2;
-  background-color: #00acb0;
   text-align: center;
   padding: 24px 10px;
   text-decoration: none;
@@ -38,5 +37,7 @@
 }
 
 .navLink:hover {
-  background-color: #008183;
+  background-color: rgba(237, 242, 243, 0.8); /* Lighter background color with some transparency */
+  color: #fff; /* Text color */
+  transition: background-color 0.7s ease; /* Transition effect */
 }

@@ -129,9 +129,9 @@ function App() {
             <Ragman />
           </ProtectedRoute>
 
-          <ProtectedRoute exact path='/about'>
+          <Route exact path='/about'>
             <AboutPage />
-          </ProtectedRoute>
+          </Route>
 
           {/* If none of the other routes matched, we will show a 404. */}
           <Route>

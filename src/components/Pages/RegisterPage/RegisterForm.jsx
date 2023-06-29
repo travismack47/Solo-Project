@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Box, TextField, Button, Typography } from '@mui/material';
-import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import { TextField, Button, Typography } from '@mui/material';
+import { useHistory } from 'react-router-dom';
 import './RegisterPage.css';
  
 function RegisterForm() {
@@ -24,84 +24,62 @@ function RegisterForm() {
   };
 
   return (
-    <Box
-      sx={{
-        display: 'flex',
-        flexDirection: 'column',
-        alignItems: 'center',
-        padding: '20px',
-        backgroundColor: 'rgba(255, 255, 255, 0.85)',
-        borderRadius: '10px',
-        boxShadow: '0px 2px 6px rgba(0, 0, 0, 0.3)',
-        marginTop: '30px'
-      }}
-      component="form"
-      onSubmit={registerUser}
-    >
-      <Typography variant="h6">Register User</Typography>
+    <form className="register-form" onSubmit={registerUser}>
+      <Typography variant="h6" className="register-form-title">
+        Register User
+      </Typography>
       {errors.registrationMessage && (
-        <Typography
-          sx={{
-            color: 'red',
-          }}
-          role="alert"
-        >
+        <Typography variant="h3" color="error" className="register-form-error">
           {errors.registrationMessage}
         </Typography>
       )}
       <div>
         <TextField
-          style={{
-            marginTop: '10px',
-            width: '100%',
-          }}
           label="Username"
           variant="outlined"
           value={username}
           required
           onChange={(event) => setUsername(event.target.value)}
+          fullWidth
+          margin="normal"
         />
       </div>
       <div>
         <TextField
-          style={{
-            marginTop: '10px',
-            width: '100%',
-          }}
           label="Password"
           variant="outlined"
           type="password"
           value={password}
           required
           onChange={(event) => setPassword(event.target.value)}
+          fullWidth
+          margin="normal"
         />
       </div>
       <div>
         <Button
-          style={{
-            marginTop: '10px',
-            padding: '8px 16px',
-            borderRadius: '5px',
-          }}
           type="submit"
           variant="contained"
           color="primary"
+          fullWidth
         >
           Register
         </Button>
-        <h3>Already a member?</h3>
-      <Button
-        variant="contained"
-        color="primary"
-        onClick={() => {
-          history.push('/login');
-        }}
-        sx={{ marginTop: '10px' }}
-      >
-        Login
-      </Button>
       </div>
-    </Box>
+      <div className="register-form-login-link">
+        <Typography variant="h6">Already a member?</Typography>
+        <Button
+          variant="contained"
+          color="primary"
+          onClick={() => {
+            history.push('/login');
+          }}
+          sx={{ marginTop: '10px' }}
+        >
+          Login
+        </Button>
+      </div>
+    </form>
   );
 }
 

@@ -26,6 +26,7 @@ function Nav() {
   const handleMenuItemClick = () => { // Closes the Modal dropdown when a Trader is clicked //
     handleClose();
   };
+  
 
   const handleLogout = () => {
     Swal.fire({
@@ -51,7 +52,7 @@ function Nav() {
 
 
   return (
-    <AppBar position="sticky"> {/* Keeps the nav bar located at the top of the page */}
+    <AppBar position="sticky" sx={{ backgroundColor: 'rgba(0, 0, 0, 0.8)' }}> {/* Keeps the nav bar located at the top of the page */}
       <Toolbar>
         <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
           <Link to="/home" style={{ textDecoration: 'none', color: 'inherit' }}>

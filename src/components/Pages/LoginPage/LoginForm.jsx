@@ -2,7 +2,7 @@ import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
 import { TextField, Button, Typography } from '@mui/material';
-import './LoginPage.css'
+import './LoginPage.css';
 
 function LoginForm() {
   const [username, setUsername] = useState('');
@@ -27,16 +27,16 @@ function LoginForm() {
   };
 
   return (
-    <form onSubmit={login} sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', width: '100%', mt: 4 }}>
-      <Typography variant="h6" align='center'>
+    <form className="login-form" onSubmit={login}>
+      <Typography variant="h6" className="login-form-title">
         Login
       </Typography>
       {errors.loginMessage && (
-        <Typography variant="h3" color="error" sx={{ mb: 2 }}>
+        <Typography variant="h3" color="error" className="login-form-error">
           {errors.loginMessage}
         </Typography>
       )}
-      <div>
+      <div className="login-form-container">
         <TextField
           label="Username"
           type="text"
@@ -47,10 +47,8 @@ function LoginForm() {
           variant="outlined"
           size="medium"
           fullWidth
-          sx={{ mb: 2 }}
+          margin="normal"
         />
-      </div>
-      <div>
         <TextField
           label="Password"
           type="password"
@@ -61,10 +59,8 @@ function LoginForm() {
           variant="outlined"
           size="medium"
           fullWidth
-          sx={{ mb: 2 }}
+          margin="normal"
         />
-      </div>
-      <div>
         <Button variant="contained" color="primary" type="submit">
           Log In
         </Button>
