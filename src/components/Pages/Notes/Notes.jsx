@@ -39,7 +39,7 @@ const Notes = () => {
       <div className="notes-page">
         <div className="background-imagenotes" />
         <div style={{ marginTop: "2rem" }} />
-        <Container className="mt-4">
+        <Container className="mt-4" style={{ marginTop: "2rem" }}>
           {/* Form container */}
           <Paper elevation={3} className="form-container">
             <form>

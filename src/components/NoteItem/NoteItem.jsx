@@ -97,22 +97,22 @@ const NoteItem = ({ note }) => {
         <TableCell>
           {isEditable ? (
             <>
-              <Button variant="contained" onClick={handleCancel}>
+              <Button variant="contained" onClick={handleCancel} >
                 Cancel
               </Button>
-              <Button variant="contained" color="primary" onClick={handleUpdate}>
+              <Button variant="contained" color="primary" onClick={handleUpdate} >
                 Save
               </Button>
             </>
           ) : (
-            <>
+            <div className="edit-delete-btns">
               <Button variant="contained" color="primary" onClick={handleEdit}>
                 Edit
               </Button>
               <Button variant="contained" color="error" onClick={swal}>
                 Delete
               </Button>
-            </>
+            </div>
           )}
         </TableCell>
       </TableRow>
@@ -139,10 +139,10 @@ const NoteItem = ({ note }) => {
             fullWidth
             sx={{ mb: 2 }}
           />
-          <Button variant="contained" color="secondary" onClick={handleCancel} sx={{ mr: 2 }}>
+          <Button variant="contained" color="secondary" onClick={handleCancel} >
             Cancel
           </Button>
-          <Button variant="contained" color="primary" onClick={handleUpdate}>
+          <Button variant="contained" color="primary" onClick={handleUpdate} >
             Save
           </Button>
         </Box>

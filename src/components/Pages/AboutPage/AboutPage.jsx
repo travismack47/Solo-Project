@@ -1,54 +1,69 @@
 import React from "react";
-import { Grid, Typography, List, ListItem, ListItemText, Paper, Link } from "@mui/material"; // Material-UI imports //
+import {
+  Grid,
+  Typography,
+  Paper,
+  Link,
+} from "@mui/material";
+import './AboutPage.css';
+
+
 
 const AboutPage = () => {
-  const items = [ // Storing display text for DOM so Material code isn't so messy //
-    "JavaScript",
-    "HTML",
-    "CSS",
-    "React",
-    "Node.js",
-    "Express.js",
-    "SQL",
-    "Material-UI",
-    "Redux",
-    "fly.io",
-    "PostgresQL",
-    "Postman",
-  ];
-
   return (
     <Grid container justifyContent="center" spacing={2} sx={{ marginTop: "40px" }}>
-      {/* Grid item for languages/programs/packages/libraries */}
-      <Grid item xs={12} md={6}>
-        <Paper elevation={3} sx={{ padding: "10px" }}>
-          <Typography variant="h4" align="center" gutterBottom>
-            Languages/Programs/Packages/Libraries Used:
+      {/* Grid item for the logos */}
+      <Grid item xs={12}>
+        <Paper elevation={3} sx={{ padding: "10px", textAlign: "center" }}>
+          <Typography variant="h4" gutterBottom>
+            Powered by:
           </Typography>
-          <List sx={{ display: "flex", flexDirection: "column", alignItems: "center" }}>
-            {/* Rendering list items for each language/program/package/library */}
-            {items.map((item, index) => (
-              <ListItem key={index}>
-                <ListItemText primary={item} />
-              </ListItem>
-            ))}
-          </List>
+          <div className="logo-grid"> {/* Add a div for the logo grid */}
+            <div className="logo-item">
+              <a href="http://www.javascript.com">
+              <img src={'./images/javascriptlogo.png'} 
+              alt="JavaScript Logo" className="logo-image"/> {/* Add the logo image */}
+              </a>
+            </div>
+            <div className="logo-item">
+            <a href="https://react.dev/">
+              <img src={'./images/reactlogo.png'} 
+              alt="React Logo" className="logo-image" /> {/* Add the logo image */}
+              </a>
+            </div>
+            <div className="logo-item">
+              <a href="https://redux.js.org/">
+              <img src={'./images/reduxlogo.png'} 
+              alt="Redux Logo" className="logo-image" /> {/* Add the logo image */}
+              </a>
+            </div>
+            <div className="logo-item">
+              <a href="https://mui.com/">
+              <img src={'./images/materialUIlogo.png'} 
+              alt="MaterialUI Logo" className="logo-image" /> {/* Add the logo image */}
+              </a>
+            </div>
+            <div className="logo-item">
+              <a href="https://nodejs.org/en">
+              <img src={'./images/nodejslogo.png'} 
+              alt="nodeJS Logo" className="logo-image" /> {/* Add the logo image */}
+              </a>
+            </div>
+          </div>
         </Paper>
       </Grid>
       {/* Grid item for GitHub and contact info */}
       <Grid item xs={12}>
-        <Paper elevation={3} sx={{ padding: "10px" }}>
-          <Typography variant="h4" align="center" gutterBottom>
-            {/* GitHub link */}
-            <Link href="https://github.com/travismack47" target="_blank" rel="noopener">
-              GitHub
-            </Link>
-          </Typography>
-          <Typography variant="h4" align="center" gutterBottom>
-            {/* Contact info */}
-            Contact info: travismack47@protonmail.com
-          </Typography>
-        </Paper>
+        <Typography variant="h4" align="center" gutterBottom>
+          {/* GitHub link */}
+          <Link href="https://github.com/travismack47" target="_blank" rel="noopener">
+            GitHub
+          </Link>
+        </Typography>
+        <Typography variant="h4" align="center" gutterBottom>
+          {/* Contact info */}
+          Contact info: travismack47@protonmail.com
+        </Typography>
       </Grid>
     </Grid>
   );
