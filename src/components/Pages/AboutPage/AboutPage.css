@@ -1,21 +1,20 @@
 .logo-grid {
-    display: flex;
-    flex-wrap: wrap;
-    justify-content: center;
-    gap: 30px;
-    margin-top: 20px;
-  }
-  
-  .logo-item {
-    flex-basis: calc(33.33% - 20px);
-    max-width: calc(33.33% - 20px);
-    display: flex;
-    align-items: center;
-    justify-content: center;
-  }
-  
-  .logo-image {
-   width: auto;
-   height: 150px;
-  }
-  
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  gap: 30px;
+  margin-top: 20px;
+}
+
+.logo-item {
+  flex-basis: calc(33.33% - 20px);
+  max-width: calc(33.33% - 20px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+}
+
+.logo-image {
+  width: auto;
+  height: 150px;
+}

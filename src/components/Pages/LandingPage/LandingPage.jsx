@@ -1,10 +1,7 @@
-import React, { useState } from 'react';
+import React from 'react';
 import { useHistory } from 'react-router-dom';
-import { Button, Typography } from '@mui/material'; // Import Material-UI components
+import { Button, Typography, Paper } from '@mui/material';
 import './LandingPage.css';
-
-// CUSTOM COMPONENTS
-import RegisterForm from '../RegisterPage/RegisterForm';
 
 function LandingPage() {
   const history = useHistory();
@@ -13,12 +10,27 @@ function LandingPage() {
     history.push('/login');
   };
 
-  return (
-    <div className='landing-page'>
-      <div className='background-image3' />
-    </div>
-  )
+  const onRegister = () => {
+    history.push('/registration');
+  };
 
+  return (
+    <div className='background-image3'>
+      <div className='landing-page'>
+        <Paper elevation={3} className='paper-container'>
+          <Typography variant='h5' gutterBottom>
+            Welcome to Tarkov Tracker! Please login or register a new account!
+          </Typography>
+          <Button variant='contained' color='primary' onClick={onLogin} sx={{ mr: '10px', width: 100 }}>
+            Login
+          </Button>
+          <Button variant='contained' color='secondary' onClick={onRegister} sx={{ mr: '10px', width: 100 }}>
+            Register
+          </Button>
+        </Paper>
+      </div>
+    </div>
+  );
 }
 
 export default LandingPage;
