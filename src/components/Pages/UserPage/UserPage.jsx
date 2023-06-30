@@ -40,7 +40,7 @@ function UserPage() {
         <Typography variant="h2" gutterBottom color={'white'}>
           Welcome, {user.username}!
         </Typography>
-        <Button variant="contained" color="primary" onClick={handleLogout} type='logout'>
+        <Button variant="contained" color="primary" onClick={handleLogout} type='logout' id='logout-btn'>
           Log Out
         </Button>
       </div>

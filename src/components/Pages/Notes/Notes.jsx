@@ -80,22 +80,23 @@ const Notes = () => {
                 backgroundColor: "rgba(255, 255, 255, 0.93)",
               }}
             >
-              <Table sx={{ minWidth: 700 }}>
+              <Table sx={{ minWidth: 700, marginBottom: '20px' }} align="center">
                 <TableHead>
                   <TableRow>
                     {/* Table columns */}
-                    <TableCell sx={{ maxWidth: 300 }}>Title</TableCell>
+                    <TableCell sx={{ maxWidth: 300 }} align="center">Title</TableCell>
                     <TableCell
                       sx={{
                         maxWidth: 300,
                         whiteSpace: "pre-wrap",
                         wordWrap: "break-word",
                       }}
+                      align="center"
                     >
                       Description
                     </TableCell>
-                    <TableCell sx={{ width: 150 }}>Timestamp</TableCell>
-                    <TableCell sx={{ width: 150 }} align="right"></TableCell>
+                    <TableCell sx={{ width: 150 }} align="center">Timestamp</TableCell>
+                    <TableCell sx={{ width: 150 }} align="center"></TableCell>
                   </TableRow>
                 </TableHead>
                 <TableBody>

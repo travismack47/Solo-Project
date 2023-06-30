@@ -1,8 +1,10 @@
 import React, { useState } from "react";
 import { useDispatch } from "react-redux";
-import { TableRow, TableCell, TextField, Button, Modal, Box } from "@mui/material";
+import { TableRow, TableCell, TextField, Button, Modal, Box, IconButton } from "@mui/material";
 import moment from "moment";
 import Swal from "sweetalert2";
+import EditIcon from '@mui/icons-material/Edit';
+import DeleteIcon from '@mui/icons-material/Delete';
 
 const NoteItem = ({ note }) => {
   const dispatch = useDispatch();
@@ -93,7 +95,7 @@ const NoteItem = ({ note }) => {
             note.description
           )}
         </TableCell>
-        <TableCell>{moment(note.timestamp).calendar()}</TableCell>
+        <TableCell align="center">{moment(note.timestamp).calendar()}</TableCell>
         <TableCell>
           {isEditable ? (
             <>
@@ -106,12 +108,12 @@ const NoteItem = ({ note }) => {
             </>
           ) : (
             <div className="edit-delete-btns">
-              <Button variant="contained" color="primary" onClick={handleEdit}>
-                Edit
-              </Button>
-              <Button variant="contained" color="error" onClick={swal}>
-                Delete
-              </Button>
+              <IconButton>
+                <EditIcon onClick={handleEdit} />
+              </IconButton>
+              <IconButton>
+                <DeleteIcon onClick={swal} />
+              </IconButton>
             </div>
           )}
         </TableCell>

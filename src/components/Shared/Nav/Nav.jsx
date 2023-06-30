@@ -5,7 +5,7 @@ import { useSelector, useDispatch } from 'react-redux';
 import { useState } from 'react';
 import Swal from 'sweetalert2';
 import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
-import logoImage from './tarkovhelmetnobg.png';
+import logoImage from './tarkovhelmetcropped.png';
 
 function Nav() {
   const user = useSelector((store) => store.user); // Pulling users list from the store //
@@ -54,11 +54,13 @@ function Nav() {
 
   return (
     <>
-      <AppBar position="sticky" sx={{ backgroundColor: 'rgba(0, 0, 0, 0.8)' }}> {/* Keeps the nav bar located at the top of the page */}
+      <AppBar position="sticky" sx={{ backgroundColor: 'rgba(0, 0, 0, 0.8)', 
+      paddingLeft: '-10px' }}> {/* Keeps the nav bar located at the top of the page */}
         <Toolbar>
           <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
             <Link to="/home" style={{ textDecoration: 'none', color: 'inherit' }}>
-              <img src={logoImage} alt="Tarkov Tracker Logo" style={{ width: '150px' }} />
+              <img src={logoImage} alt="Tarkov Tracker Logo" style={{ width: 'auto', height: '50px', marginLeft: '10px',
+            marginTop: '5px' }}/>
             </Link>
           </Typography>
           <Box>
