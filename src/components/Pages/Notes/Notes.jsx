@@ -1,17 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  Container,
-  TextField,
-  Button,
-  Table,
-  TableBody,
-  TableCell,
-  TableContainer,
-  TableHead,
-  TableRow,
-  Paper,
-} from "@mui/material";
+import { Container, TextField, Button, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from "@mui/material";
 import NoteItem from "../../NoteItem/NoteItem";
 import "./Notes.css";
 
@@ -34,10 +23,10 @@ const Notes = () => {
     setNewNoteDesc("");
   };
 
+
   return (
-    <>
+    <div className="background-imagenotes">
       <div className="notes-page">
-        <div className="background-imagenotes" />
         <div style={{ marginTop: "2rem" }} />
         <Container className="mt-4" style={{ marginTop: "2rem" }}>
           {/* Form container */}
@@ -83,7 +72,7 @@ const Notes = () => {
               sx={{
                 width: "100%",
                 margin: "0 auto",
-                backgroundColor: "rgba(255, 255, 255, 0.75)",
+                backgroundColor: "rgba(255, 255, 255, 0.93)",
               }}
             >
               <Table sx={{ minWidth: 700 }}>
@@ -115,7 +104,7 @@ const Notes = () => {
           </div>
         </Container>
       </div>
-    </>
+    </div>
   );
 };
 

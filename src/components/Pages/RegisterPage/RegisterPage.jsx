@@ -10,7 +10,8 @@ function RegisterPage() {
   return (
     <div className="register-page">
       <div className="background-image" />
-      <Container maxWidth="sm" sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', justifyContent: 'flex-start', height: '100vh' }}>
+      <Container maxWidth="sm" sx={{ display: 'flex', flexDirection: 'column', alignItems: 'center', 
+      justifyContent: 'flex-start', height: '100vh' }}>
         <Box
           sx={{
             backgroundColor: 'rgba(255, 255, 255 )',
@@ -21,6 +22,16 @@ function RegisterPage() {
           }}
         >
           <RegisterForm />
+          <Button
+            variant="text"
+            color="primary"
+            onClick={() => {
+              history.push('/login');
+            }}
+            sx={{ mt: 2 }}
+          >
+            Login
+          </Button>
         </Box>
       </Container>
     </div>

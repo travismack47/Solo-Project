@@ -62,7 +62,7 @@ function LoginForm() {
           margin="normal"
         />
         <Button variant="contained" color="primary" type="submit">
-          Log In
+          Login
         </Button>
       </div>
     </form>

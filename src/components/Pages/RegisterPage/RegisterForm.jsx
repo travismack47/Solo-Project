@@ -25,58 +25,41 @@ function RegisterForm() {
 
   return (
     <form className="register-form" onSubmit={registerUser}>
-      <Typography variant="h6" className="register-form-title">
-        Register User
+      <Typography variant="h6" className="login-form-title">
+        Register
       </Typography>
-      {errors.registrationMessage && (
-        <Typography variant="h3" color="error" className="register-form-error">
-          {errors.registrationMessage}
+      {errors.loginMessage && (
+        <Typography variant="h3" color="error" className="login-form-error">
+          {errors.loginMessage}
         </Typography>
       )}
-      <div>
+      <div className="login-form-container">
         <TextField
           label="Username"
-          variant="outlined"
-          value={username}
+          type="text"
+          name="username"
           required
+          value={username}
           onChange={(event) => setUsername(event.target.value)}
+          variant="outlined"
+          size="medium"
           fullWidth
           margin="normal"
         />
-      </div>
-      <div>
         <TextField
           label="Password"
-          variant="outlined"
           type="password"
-          value={password}
+          name="password"
           required
+          value={password}
           onChange={(event) => setPassword(event.target.value)}
+          variant="outlined"
+          size="medium"
           fullWidth
           margin="normal"
         />
-      </div>
-      <div>
-        <Button
-          type="submit"
-          variant="contained"
-          color="primary"
-          fullWidth
-        >
+        <Button variant="contained" color="primary" type="submit">
           Register
-        </Button>
-      </div>
-      <div className="register-form-login-link">
-        <Typography variant="h6">Already a member?</Typography>
-        <Button
-          variant="contained"
-          color="primary"
-          onClick={() => {
-            history.push('/login');
-          }}
-          sx={{ marginTop: '10px' }}
-        >
-          Login
         </Button>
       </div>
     </form>

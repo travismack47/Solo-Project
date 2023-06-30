@@ -12,7 +12,7 @@ const AboutPage = () => {
     <Grid container justifyContent="center" spacing={2} sx={{ marginTop: "98px" }}>
       {/* Grid item for the logos */}
       <Grid item xs={12}>
-        <Paper elevation={3} sx={{ padding: "10px", textAlign: "center", backgroundColor: "darkgray" }}>
+        <Paper elevation={3} sx={{ padding: "10px", textAlign: "center" }}>
           <Typography variant="h4" gutterBottom>
             Powered by:
           </Typography>
