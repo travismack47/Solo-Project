@@ -18,27 +18,27 @@ const AboutPage = () => {
           </Typography>
           <div className="logo-grid"> {/* Add a div for the logo grid */}
             <div className="logo-item">
-              <a href="http://www.javascript.com">
-                <img src={'./images/javascriptlogo.png'} alt="JavaScript Logo" className="logo-image"/>
+              <a href="http://www.javascript.com" target="_blank" rel="noopener">
+                <img src={'./images/javascriptlogo.png'} alt="JavaScript Logo" className="logo-image" />
               </a>
             </div>
             <div className="logo-item">
-              <a href="https://react.dev/">
+              <a href="https://react.dev/" target="_blank" rel="noopener">
                 <img src={'./images/reactlogo.png'} alt="React Logo" className="logo-image" />
               </a>
             </div>
             <div className="logo-item">
-              <a href="https://redux.js.org/">
+              <a href="https://redux.js.org/" target="_blank" rel="noopener">
                 <img src={'./images/reduxlogo.png'} alt="Redux Logo" className="logo-image" />
               </a>
             </div>
             <div className="logo-item">
-              <a href="https://mui.com/">
+              <a href="https://mui.com/" target="_blank" rel="noopener">
                 <img src={'./images/materialUIlogo.png'} alt="MaterialUI Logo" className="logo-image" />
               </a>
             </div>
             <div className="logo-item">
-              <a href="https://nodejs.org/en">
+              <a href="https://nodejs.org/en" target="_blank" rel="noopener">
                 <img src={'./images/nodejslogo.png'} alt="nodeJS Logo" className="logo-image" />
               </a>
             </div>
