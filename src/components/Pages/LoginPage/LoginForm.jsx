@@ -61,7 +61,7 @@ function LoginForm() {
           fullWidth
           margin="normal"
         />
-        <Button variant="contained" color="primary" type="submit">
+        <Button variant="contained" color="primary" type="submit" id='login-btn'>
           Login
         </Button>
       </div>

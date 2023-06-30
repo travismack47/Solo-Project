@@ -21,3 +21,26 @@
     justify-content: center;
   }
   
+  #login-btn {
+    width: 100px;
+    height: 40px;
+    font-size: 13px;
+    font-weight: bold;
+    background-color: #0021f5;
+    color: white;
+    border-radius: 10px;
+    border: none;
+    box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
+    transition: background-color 0.3s ease;
+  
+    /* Hover effect */
+    &:hover {
+      background-color: #00ccf4;
+    }
+  
+    /* Active effect */
+    &:active {
+      background-color: #aa0042;
+    }
+  }
+  

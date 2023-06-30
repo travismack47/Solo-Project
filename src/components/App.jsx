@@ -14,6 +14,7 @@ import AboutPage from './Pages/AboutPage/AboutPage';
 import UserPage from './Pages/UserPage/UserPage';
 import LandingPage from './Pages/LandingPage/LandingPage';
 import LoginPage from './Pages/LoginPage/LoginPage';
+import Footer from './Shared/Footer/Footer';
 import RegisterPage from './Pages/RegisterPage/RegisterPage';
 import Prapor from './Pages/Prapor/Prapor';
 import Therapist from './Pages/Therapist/Therapist';
@@ -138,6 +139,7 @@ function App() {
             <h1>404</h1>
           </Route>
         </Switch>
+        <Footer />
       </div>
     </Router>
   );

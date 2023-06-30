@@ -58,7 +58,7 @@ function RegisterForm() {
           fullWidth
           margin="normal"
         />
-        <Button variant="contained" color="primary" type="submit">
+        <Button variant="contained" color="primary" type="submit" id='register-btn'>
           Register
         </Button>
       </div>

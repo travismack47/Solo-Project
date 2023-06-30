@@ -21,10 +21,10 @@ function LandingPage() {
           <Typography variant='h5' gutterBottom>
             Welcome to Tarkov Tracker! Please login or register a new account!
           </Typography>
-          <Button variant='contained' color='primary' onClick={onLogin} sx={{ mr: '10px', width: 100 }}>
+          <Button variant='contained' onClick={onLogin} id='login-btn'>
             Login
           </Button>
-          <Button variant='contained' color='secondary' onClick={onRegister} sx={{ mr: '10px', width: 100 }}>
+          <Button variant='contained' onClick={onRegister} id='register-btn'>
             Register
           </Button>
         </Paper>
