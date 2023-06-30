@@ -1,6 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { Container, TextField, Button, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, Paper } from "@mui/material";
+import {
+  Container, TextField, Button, Table, TableBody, TableCell, TableContainer, TableHead,
+  TableRow, Paper, Typography
+} from "@mui/material";
 import NoteItem from "../../NoteItem/NoteItem";
 import "./Notes.css";
 
@@ -28,36 +31,38 @@ const Notes = () => {
     <div className="background-imagenotes">
       <div className="notes-page">
         <div style={{ marginTop: "2rem" }} />
-        <Container className="mt-4" style={{ marginTop: "2rem" }}>
+        <Container className="mt-4" style={{ marginTop: "6rem" }}>
           {/* Form container */}
-          <Paper elevation={3} className="form-container">
-            <form>
-              {/* Input field for note title */}
-              <TextField
-                label="Title"
-                variant="filled"
-                value={newNoteTitle}
-                onChange={(e) => setNewNoteTitle(e.target.value)} // Handles the input text for the new note's title
-                placeholder="Enter note title"
-                fullWidth
-                margin="normal"
-              />
-              {/* Input field for note description */}
-              <TextField
-                label="Description"
-                variant="filled"
-                value={newNoteDesc}
-                onChange={(e) => setNewNoteDesc(e.target.value)} // Handles the input text for the new note's description
-                placeholder="Enter note description"
-                multiline
-                rows={5}
-                fullWidth
-                margin="normal"
-              />
-              {/* Button for saving the new note */}
-              <Button variant="contained" color="primary" onClick={handleNote}>
-                Save Note
-              </Button>
+          <Paper elevation={1} className="form-container">
+            <form className="notes-form" onSubmit={handleNote}>
+              <Typography variant="h6" className="notes-form-title">
+                Add Note
+              </Typography>
+              <div className="notes-form-container">
+                <TextField
+                  label="Title"
+                  variant="outlined"
+                  value={newNoteTitle}
+                  onChange={(e) => setNewNoteTitle(e.target.value)}
+                  placeholder="Enter note title"
+                  fullWidth
+                  margin="normal"
+                />
+                <TextField
+                  label="Description"
+                  variant="outlined"
+                  value={newNoteDesc}
+                  onChange={(e) => setNewNoteDesc(e.target.value)}
+                  placeholder="Enter note description"
+                  multiline
+                  rows={5}
+                  fullWidth
+                  margin="normal"
+                />
+                <Button variant="outlined" color="primary" type="submit">
+                  Save Note
+                </Button>
+              </div>
             </form>
           </Paper>
 
@@ -81,12 +86,12 @@ const Notes = () => {
                     {/* Table columns */}
                     <TableCell sx={{ maxWidth: 300 }}>Title</TableCell>
                     <TableCell
-                    sx={{
-                      maxWidth: 300,
-                      whiteSpace: "pre-wrap",
-                      wordWrap: "break-word",
-                    }}
-                  >
+                      sx={{
+                        maxWidth: 300,
+                        whiteSpace: "pre-wrap",
+                        wordWrap: "break-word",
+                      }}
+                    >
                       Description
                     </TableCell>
                     <TableCell sx={{ width: 150 }}>Timestamp</TableCell>
@@ -109,3 +114,5 @@ const Notes = () => {
 };
 
 export default Notes;
+
+

@@ -33,10 +33,10 @@ export default function Prapor() {
                         <Table>
                             <TableHead>
                                 <TableRow>
-                                    <TableCell sx={{ maxWidth: 300 }}>Name</TableCell>
-                                    <TableCell sx={{ maxWidth: 700 }}>Description</TableCell>
-                                    <TableCell sx={{ width: 150 }}>Mark Complete</TableCell>
-                                    <TableCell sx={{ width: 150 }}>Completed?</TableCell>
+                                    <TableCell sx={{ maxWidth: 300 }} align="center">Name</TableCell> {/* Quest name column */}
+                                    <TableCell sx={{ maxWidth: 700 }} align="center">Description</TableCell> {/* Quest description column */}
+                                    <TableCell sx={{ width: 150 }} align="center">Mark Complete</TableCell> {/* Mark complete column */}
+                                    <TableCell sx={{ width: 150 }} align="center">Completed?</TableCell> {/* Completed status column */}
                                 </TableRow>
                             </TableHead>
                             <TableBody>
@@ -58,6 +58,6 @@ export default function Prapor() {
                     </div>
                 </div>
             </div>
-            </div>
+        </div>
     );
 };

@@ -19,3 +19,21 @@
   max-height: 400px;
   overflow-y: auto;
 }
+
+.notes-form {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.form-container {
+  padding: 1rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  height: auto;
+  max-width: 400px;
+  margin: 0 auto;
+}

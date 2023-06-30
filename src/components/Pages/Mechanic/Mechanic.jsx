@@ -36,10 +36,10 @@ export default function Mechanic() {
             <Table>
               <TableHead>
                 <TableRow>
-                  <TableCell sx={{ maxWidth: 300 }}>Name</TableCell> {/* Quest name column */}
-                  <TableCell sx={{ maxWidth: 700 }}>Description</TableCell> {/* Quest description column */}
-                  <TableCell sx={{ width: 150 }}>Mark Complete</TableCell> {/* Mark complete column */}
-                  <TableCell sx={{ width: 150 }}>Completed?</TableCell> {/* Completed status column */}
+                <TableCell sx={{ maxWidth: 300 }} align="center">Name</TableCell> {/* Quest name column */}
+                  <TableCell sx={{ maxWidth: 700 }} align="center">Description</TableCell> {/* Quest description column */}
+                  <TableCell sx={{ width: 150 }} align="center">Mark Complete</TableCell> {/* Mark complete column */}
+                  <TableCell sx={{ width: 150 }} align="center">Completed?</TableCell> {/* Completed status column */}
                 </TableRow>
               </TableHead>
               <TableBody>

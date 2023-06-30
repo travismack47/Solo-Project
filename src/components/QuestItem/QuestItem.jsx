@@ -2,6 +2,9 @@ import React from "react";
 import { useDispatch } from "react-redux";
 import { TableCell, TableRow, Button } from "@mui/material"; // Imports from Material-UI //
 import Swal from "sweetalert2"; // Importing Sweet Alert //
+import './QuestItem.css';
+import CheckIcon from '@mui/icons-material/Check';
+import ErrorIcon from '@mui/icons-material/Error';
 
 export default function QuestItem({ quest, traderId }) {
   const dispatch = useDispatch();
@@ -56,18 +59,18 @@ export default function QuestItem({ quest, traderId }) {
       <TableRow key={quest.id} style={{ height: 50 }}>
         <TableCell>{quest.name}</TableCell> {/* Displaying quest name */}
         <TableCell>{quest.description}</TableCell> {/* Displaying quest description */}
-        <TableCell>
+        <TableCell align="center">
           {isComplete ? (
-            <Button variant="contained" color="primary" sx={{ width: 120, height: 50 }} onClick={swal2}>
+            <Button variant="contained" color="primary" id="undo-btn" onClick={swal2}>
               Undo
             </Button>
           ) : (
-            <Button variant="contained" color="primary" sx={{ width: 120, height: 50 }} onClick={swal}>
+            <Button variant="contained" color="primary" id="complete-btn" onClick={swal}>
              Complete
             </Button>
           )}
         </TableCell>
-        <TableCell>{isComplete ? "✅" : "🚫"}</TableCell> {/* Conditionally checking if the quest is complete and displaying appropriate symbol */}
+        <TableCell align="center">{isComplete ? <CheckIcon /> : <ErrorIcon />}</TableCell> {/* Conditionally checking if the quest is complete and displaying appropriate symbol */}
       </TableRow>
   );
 }
