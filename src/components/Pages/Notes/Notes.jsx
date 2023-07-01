@@ -1,9 +1,7 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import {
-  Container, TextField, Button, Table, TableBody, TableCell, TableContainer, TableHead,
-  TableRow, Paper, Typography
-} from "@mui/material";
+import { Container, TextField, Button, Table, TableBody, TableCell, TableContainer, TableHead, TableRow, 
+Paper, Typography } from "@mui/material";
 import NoteItem from "../../NoteItem/NoteItem";
 import "./Notes.css";
 
@@ -14,7 +12,7 @@ const Notes = () => {
   const [newNoteDesc, setNewNoteDesc] = useState("");
 
   useEffect(() => {
-    dispatch({ type: "FETCH_NOTES" }); // Fetches the notes from the server when the component mounts
+    dispatch({ type: "FETCH_NOTES" }); // Fetches the notes from the server when the page re-renders //
   }, []);
 
   const handleNote = () => {
@@ -59,8 +57,8 @@ const Notes = () => {
                   fullWidth
                   margin="normal"
                 />
-                <Button variant="outlined" color="primary" type="submit">
-                  Save Note
+                <Button variant="outlined" color="primary" type="submit" id="save-btn">
+                  Save
                 </Button>
               </div>
             </form>
@@ -69,6 +67,7 @@ const Notes = () => {
           <div style={{ marginTop: "2rem" }} />
 
           {/* Container for the table */}
+          {notes.length > 0 &&
           <div className="table-container">
             {/* Table for displaying the list of notes */}
             <TableContainer
@@ -107,7 +106,7 @@ const Notes = () => {
                 </TableBody>
               </Table>
             </TableContainer>
-          </div>
+          </div> }
         </Container>
       </div>
     </div>

@@ -70,7 +70,7 @@ export default function QuestItem({ quest, traderId }) {
             </Button>
           )}
         </TableCell>
-        <TableCell align="center">{isComplete ? <CheckIcon /> : <ErrorIcon />}</TableCell> {/* Conditionally checking if the quest is complete and displaying appropriate symbol */}
+        <TableCell align="center">{isComplete && <CheckIcon />}</TableCell> {/* Conditionally checking if the quest is complete and displaying appropriate symbol */}
       </TableRow>
   );
 }

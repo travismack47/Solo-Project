@@ -21,7 +21,7 @@ function Footer() {
       }}
     >
       <Typography variant="subtitle1">Tarkov Tracker</Typography>
-      <Typography variant="subtitle1">©️ Travis Mack</Typography>
+      <Typography variant="subtitle1">©️Travis Mack</Typography>
       <div>
         <Link href="https://github.com/travismack47" target="_blank" rel="noopener" color="inherit">
           <GitHubIcon sx={{ mr: 2 }} />

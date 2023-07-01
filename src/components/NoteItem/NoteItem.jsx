@@ -5,6 +5,7 @@ import moment from "moment";
 import Swal from "sweetalert2";
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
+import './NoteItem.css';
 
 const NoteItem = ({ note }) => {
   const dispatch = useDispatch();
@@ -72,19 +73,22 @@ const NoteItem = ({ note }) => {
   return (
     <>
       <TableRow>
-        <TableCell>
+        <TableCell align="center">
           {isEditable ? (
+            // Render the editable text field when in edit mode
             <TextField
               type="text"
               value={newNoteTitle}
               onChange={(e) => setNewNoteTitle(e.target.value)}
             />
           ) : (
+            // Render the note title when not in edit mode
             note.title
           )}
         </TableCell>
-        <TableCell>
+        <TableCell align="center">
           {isEditable ? (
+            // Render the editable text field when in edit mode
             <TextField
               multiline
               rows={3}
@@ -92,21 +96,24 @@ const NoteItem = ({ note }) => {
               onChange={(e) => setNewNoteDesc(e.target.value)}
             />
           ) : (
+            // Render the note description when not in edit mode
             note.description
           )}
         </TableCell>
         <TableCell align="center">{moment(note.timestamp).calendar()}</TableCell>
         <TableCell>
           {isEditable ? (
+            // Render the cancel and save buttons inside the modal when in edit mode
             <>
-              <Button variant="contained" onClick={handleCancel} >
+              <Button variant="contained" color="secondary" onClick={handleCancel}>
                 Cancel
               </Button>
-              <Button variant="contained" color="primary" onClick={handleUpdate} >
+              <Button variant="contained" color="primary" onClick={handleUpdate}>
                 Save
               </Button>
             </>
           ) : (
+            // Render the edit and delete buttons when not in edit mode
             <div className="edit-delete-btns">
               <IconButton>
                 <EditIcon onClick={handleEdit} />
@@ -141,10 +148,10 @@ const NoteItem = ({ note }) => {
             fullWidth
             sx={{ mb: 2 }}
           />
-          <Button variant="contained" color="secondary" onClick={handleCancel} >
+          <Button variant="contained" color="secondary" onClick={handleCancel} id="cancel-btn">
             Cancel
           </Button>
-          <Button variant="contained" color="primary" onClick={handleUpdate} >
+          <Button variant="contained" color="primary" onClick={handleUpdate} id="save-btn">
             Save
           </Button>
         </Box>

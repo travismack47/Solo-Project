@@ -4,7 +4,7 @@ import { Typography, Box, AppBar, Toolbar, Button, Modal, Menu, MenuItem } from 
 import { useSelector, useDispatch } from 'react-redux';
 import { useState } from 'react';
 import Swal from 'sweetalert2';
-import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
+import { useHistory, useLocation } from 'react-router-dom/cjs/react-router-dom.min';
 import logoImage from './tarkovhelmetcropped.png';
 
 function Nav() {
@@ -13,6 +13,14 @@ function Nav() {
   const [anchorEl, setAnchorEl] = useState(null); // State for the anchor element of the menu //
   const dispatch = useDispatch();
   const history = useHistory();
+  const location = useLocation();
+  const currentPage = location.pathname; // Get the current URL path
+
+  let pageName = '';
+
+  if (currentPage === '/prapor') {
+    pageName = 'Prapor';
+  }
 
   const handleOpen = (event) => { // Handles the opening of the dropdown menu //
     setIsOpen(true);
@@ -63,9 +71,12 @@ function Nav() {
             marginTop: '5px' }}/>
             </Link>
           </Typography>
+          <Typography variant="h6" component="div" sx={{ flexGrow: 1, textAlign: 'center' }}>
+            {pageName}
+          </Typography>
           <Box>
             {/* If no user is logged in, show login/register button */}
-            {!user.id && (
+            {!user.id && ( 
               <Button color="inherit" component={Link} to="/login" sx={{
                 '&:hover': {
                   boxShadow: '0 0 8px rgba(255, 255, 255, 0.5)',

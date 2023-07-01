@@ -6,6 +6,17 @@
   margin-top: 20px;
 }
 
+.background-imageabout {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%; /* Use 100vh to fill the entire viewport height */
+    background-image: url('/Users/travismack/Desktop/Homework/Solo-Project/public/images/usecwallpaper.png');
+    background-size: cover;
+    background-position: center;
+  }
+
 .logo-item {
   flex-basis: calc(33.33% - 20px);
   max-width: calc(33.33% - 20px);
@@ -18,3 +29,4 @@
   width: auto;
   height: 150px;
 }
+

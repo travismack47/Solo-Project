@@ -29,7 +29,8 @@ export default function Prapor() {
         <div className="background-prapor">
             <div className="prapor-page">
                 <div style={{ display: "flex", flexDirection: "column" }}>
-                    <TableContainer component={Paper} elevation={3} sx={{ width: 1300, margin: "0 auto", backgroundColor: "rgba(255, 255, 255, 0.75)" }}>
+                    <TableContainer component={Paper} elevation={3} sx={{ width: 1300, margin: "0 auto", 
+                    backgroundColor: "rgba(255, 255, 255, 0.75)" }}>
                         <Table>
                             <TableHead>
                                 <TableRow>
@@ -52,8 +53,8 @@ export default function Prapor() {
                             count={Math.ceil(quests.length / questsPerPage)}
                             page={currentPage}
                             onChange={handleChangePage}
-                            color="primary"
-                            sx={{ color: 'rgba(255, 255, 255, 0.8)' }}
+                            color= 'primary'
+                            sx={{ color: '#0021f5' }}
                         />
                     </div>
                 </div>

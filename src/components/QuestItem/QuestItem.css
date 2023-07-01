@@ -14,10 +14,5 @@
     &:hover {
       background-color: #00ccf4;
     }
-  
-    /* Active effect */
-    &:active {
-      background-color: #aa0042;
-    }
-  }
-  
+
+}

@@ -9,7 +9,9 @@ import './AboutPage.css';
 
 const AboutPage = () => {
   return (
-    <Grid container justifyContent="center" spacing={2} sx={{ marginTop: "98px" }}>
+    <div className="background-imageabout">
+    <div id="about-page">
+    <Grid container justifyContent="center" spacing={2} sx={{ marginTop: "120px", padding: '50px' }}>
       {/* Grid item for the logos */}
       <Grid item xs={12}>
         <Paper elevation={3} sx={{ padding: "10px", textAlign: "center" }}>
@@ -44,10 +46,6 @@ const AboutPage = () => {
             </div>
           </div>
           <Typography variant="h5" align="center" gutterBottom sx={{ mt: 4 }}>
-            {/* GitHub link */}
-            <Link href="https://github.com/travismack47" target="_blank" rel="noopener">
-              GitHub
-            </Link>
           </Typography>
           <Typography variant="h5" align="center" gutterBottom sx={{ mt: 4 }}>
             {/* Contact info */}
@@ -56,6 +54,8 @@ const AboutPage = () => {
         </Paper>
       </Grid>
     </Grid>
+    </div>
+    </div>
   );
 };
 
