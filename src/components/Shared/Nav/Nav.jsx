@@ -20,6 +20,26 @@ function Nav() {
 
   if (currentPage === '/prapor') {
     pageName = 'Prapor';
+  } else if (currentPage === '/jaeger') {
+    pageName = 'Jaeger';
+  } else if (currentPage === '/mechanic') {
+    pageName = 'Mechanic';
+  } else if (currentPage === '/peacekeeper') {
+    pageName = 'Peacekeeper';
+  } else if (currentPage === '/ragman') {
+    pageName = 'Ragman';
+  } else if (currentPage === '/skier') {
+    pageName = 'Skier';
+  } else if (currentPage === '/therapist') {
+    pageName = 'Therapist';
+  } else if (currentPage === '/login') {
+    pageName = 'Login';
+  } else if (currentPage === '/registration') {
+    pageName = 'Register';
+  } else if (currentPage === '/home') {
+    pageName = 'Home';
+  } else if (currentPage === '/about') {
+    pageName = 'About';
   }
 
   const handleOpen = (event) => { // Handles the opening of the dropdown menu //
@@ -42,8 +62,8 @@ function Nav() {
       title: 'Are you sure you want to log out?',
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
+      confirmButtonColor: '#0021f5',
+      cancelButtonColor: '#f50000',
       confirmButtonText: 'Yes, log out!'
     }).then((result) => {
       if (result.isConfirmed) {

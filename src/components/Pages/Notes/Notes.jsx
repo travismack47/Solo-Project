@@ -76,7 +76,7 @@ const Notes = () => {
               sx={{
                 width: "100%",
                 margin: "0 auto",
-                backgroundColor: "rgba(255, 255, 255, 0.93)",
+                backgroundColor: "rgba(255, 255, 255 )",
               }}
             >
               <Table sx={{ minWidth: 700, marginBottom: '20px' }} align="center">

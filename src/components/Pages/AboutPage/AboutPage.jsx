@@ -1,10 +1,5 @@
 import React from "react";
-import {
-  Grid,
-  Typography,
-  Paper,
-  Link,
-} from "@mui/material";
+import {Grid, Typography, Paper, } from "@mui/material";
 import './AboutPage.css';
 
 const AboutPage = () => {
@@ -14,8 +9,8 @@ const AboutPage = () => {
     <Grid container justifyContent="center" spacing={2} sx={{ marginTop: "120px", padding: '50px' }}>
       {/* Grid item for the logos */}
       <Grid item xs={12}>
-        <Paper elevation={3} sx={{ padding: "10px", textAlign: "center" }}>
-          <Typography variant="h4" gutterBottom>
+        <Paper elevation={3} sx={{ padding: "10px", textAlign: "center", backgroundColor: 'slategray' }}>
+          <Typography variant="h4" gutterBottom sx={{ color: 'white' }}>
             Powered by:
           </Typography>
           <div className="logo-grid"> {/* Add a div for the logo grid */}
@@ -45,9 +40,7 @@ const AboutPage = () => {
               </a>
             </div>
           </div>
-          <Typography variant="h5" align="center" gutterBottom sx={{ mt: 4 }}>
-          </Typography>
-          <Typography variant="h5" align="center" gutterBottom sx={{ mt: 4 }}>
+          <Typography variant="h5" align="center" gutterBottom sx={{ mt: 4, color: 'white' }}>
             {/* Contact info */}
             Contact info: travismack47@protonmail.com
           </Typography>
