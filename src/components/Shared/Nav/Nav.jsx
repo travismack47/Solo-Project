@@ -4,7 +4,7 @@ import { Typography, Box, AppBar, Toolbar, Button, Modal, Menu, MenuItem } from 
 import { useSelector, useDispatch } from 'react-redux';
 import { useState } from 'react';
 import Swal from 'sweetalert2';
-import { useHistory, useLocation } from 'react-router-dom/cjs/react-router-dom.min';
+import { useHistory } from 'react-router-dom/cjs/react-router-dom.min';
 import logoImage from './tarkovhelmetcropped.png';
 
 function Nav() {
@@ -34,8 +34,8 @@ function Nav() {
       title: 'Are you sure you want to log out?',
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonColor: '#0021f5',
-      cancelButtonColor: '#f50000',
+      confirmButtonColor: '#f50000',
+      cancelButtonColor: '#0021f5',
       confirmButtonText: 'Yes, log out!'
     }).then((result) => {
       if (result.isConfirmed) {
@@ -45,7 +45,7 @@ function Nav() {
           'success'
         ).then(() => {
           dispatch({ type: 'LOGOUT' });
-          history.push('/login');
+          history.push('/');
         });
       }
     });

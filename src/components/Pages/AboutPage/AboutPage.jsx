@@ -42,7 +42,7 @@ const AboutPage = () => {
           </div>
           <Typography variant="h5" align="center" gutterBottom sx={{ mt: 4, color: 'white' }}>
             {/* Contact info */}
-            Contact info: travismack47@protonmail.com
+            Contact: travismack47@protonmail.com
           </Typography>
         </Paper>
       </Grid>

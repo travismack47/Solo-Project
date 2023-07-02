@@ -1,10 +1,21 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
-import { Button, Typography, Paper } from '@mui/material';
+import { useState } from 'react';
+import { Button, Typography, Paper, Dialog, DialogTitle, DialogContent } from '@mui/material';
 import './LandingPage.css';
 
 function LandingPage() {
   const history = useHistory();
+  const [open, setOpen] = useState(false);
+
+  const openDialog = () => {
+    setOpen(true);
+  };
+
+  const closeDialog = () => {
+    setOpen(false);
+  };
+  
 
   const onLogin = () => {
     history.push('/login');
@@ -27,6 +38,21 @@ function LandingPage() {
           <Button variant='contained' onClick={onRegister} id='register-btn'>
             Register
           </Button>
+          <Button variant='text' onClick={openDialog} id='about-btn' className='about-button'>
+          About
+        </Button>
+        <Dialog open={open} onClose={closeDialog}>
+          <DialogTitle>About Tarkov Tracker</DialogTitle>
+          <DialogContent>
+            <Typography variant='body1' gutterBottom>
+              Tarkov Tracker is a minmialistic app that is used to track users' quest progress related to the FPS game Escape
+              From Tarkov available to play on PC. This app is able to track and store multiple users' quest progress as well as 
+              any notes that they leave on the notes page. The "Traders" dropdown menu has a list of the 7 in-game traders with 
+              links to their page and table of quests. Users can mark finished quests as "Complete" on these pages and have their
+              progress stored in a database for later access if they ever sign out.
+            </Typography>
+          </DialogContent>
+        </Dialog>
         </Paper>
       </div>
     </div>

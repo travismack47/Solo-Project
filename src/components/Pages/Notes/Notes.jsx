@@ -31,7 +31,7 @@ const Notes = () => {
         <div style={{ marginTop: "2rem" }} />
         <Container className="mt-4" style={{ marginTop: "6rem" }}>
           {/* Form container */}
-          <Paper elevation={1} className="form-container" sx={{ backgroundColor: 'blanchedalmond' }}>
+          <Paper elevation={1} className="form-container" sx={{ backgroundColor: 'blanchedalmond', opacity: 0.95 }}>
             <form className="notes-form" onSubmit={handleNote}>
               <Typography variant="h6" className="notes-form-title">
                 Add Note
@@ -76,7 +76,7 @@ const Notes = () => {
               sx={{
                 width: "100%",
                 margin: "0 auto",
-                backgroundColor: "#eaeaea",
+                backgroundColor: "blanchedalmond",
               }}
             >
               <Table sx={{ minWidth: 700, marginBottom: '20px', backgroundColor: 'blanchedalmond' }} align="center">

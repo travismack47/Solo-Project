@@ -17,11 +17,14 @@
 }
 
 .paper-container {
+  height: 160px;
   width: 400px;
   padding: 20px;
   text-align: center;
   background-color: black;
   margin-bottom: 350px;
+  position: relative;
+  opacity: 0.9;
 }
 
 #login-btn {
@@ -59,4 +62,17 @@
   &:hover {
     background-color: #bb76f4;
   }
+}
+
+#about-btn {
+  position: absolute;
+  bottom: 10px;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 20px;
+}
+
+
+#login-btn, #register-btn {
+  margin-top: 15px;
 }

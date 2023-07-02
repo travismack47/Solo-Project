@@ -22,28 +22,33 @@ const NoteItem = ({ note }) => {
     setIsModalOpen(false);
   };
 
-  const handleUpdate = () => {
-    Swal.fire({
-      title: 'Note has been updated',
-      showClass: {
-        popup: 'animate__animated animate__fadeInDown'
-      },
-      hideClass: {
-        popup: 'animate__animated animate__fadeOutUp'
-      }
-    });
-    dispatch({
-      type: "UPDATE_NOTE",
-      payload: {
-        title: newNoteTitle,
-        description: newNoteDesc,
-        noteId: note.id,
-      },
-    });
 
+  const handleUpdate = () => { // Sweet alert that pops up when a user presses undo on a completed quest // 
+    let timerInterval
+    Swal.fire({
+      title: 'Note has been updated!',
+      html: 'I will close in <b></b> milliseconds.',
+      timer: 1000,
+      timerProgressBar: true,
+      didOpen: () => {
+        Swal.showLoading()
+        const b = Swal.getHtmlContainer().querySelector('b')
+        timerInterval = setInterval(() => {
+          b.textContent = Swal.getTimerLeft()
+        }, 100)
+      },
+      willClose: () => {
+        clearInterval(timerInterval)
+      }
+    }).then((result) => {
+      /* Read more about handling dismissals below */
+      if (result.dismiss === Swal.DismissReason.timer) {
+        console.log('I was closed by the timer')
+      }
+    })
     setIsEditable(false);
     setIsModalOpen(false);
-  };
+  }
 
   const handleDelete = () => {
     dispatch({ type: "DELETE_NOTE", payload: { noteId: note.id } });
@@ -55,8 +60,8 @@ const NoteItem = ({ note }) => {
       text: "You won't be able to revert this!",
       icon: 'warning',
       showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
+      confirmButtonColor: '#f50000',
+      cancelButtonColor: '#0021f5',
       confirmButtonText: 'Yes, delete it!'
     }).then((result) => {
       if (result.isConfirmed) {
