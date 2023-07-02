@@ -22,5 +22,11 @@ body,
   background-image: url('/Users/travismack/Desktop/Homework/Solo-Project/public/images/tarkovjaeger.png');
   background-size: cover;
   background-position: center;
-  
+}
+
+.header {
+  color: white;
+  background-color: rgba(0, 0, 0, 0.8);
+  padding: 10px;
+  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.8);
 }

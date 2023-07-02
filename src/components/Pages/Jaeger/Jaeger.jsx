@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import QuestItem from "../../QuestItem/QuestItem";
-import { TableContainer, Table, TableHead, TableRow, TableCell, TableBody, Paper } from "@mui/material"; // Material-UI imports //
+import { TableContainer, Table, TableHead, TableRow, TableCell, TableBody, 
+Paper, Typography } from "@mui/material"; // Material-UI imports //
 import { Pagination } from "@mui/material";
 import './Jaeger.css';
 
@@ -29,6 +30,9 @@ export default function Jaeger() {
   return (
     <div className="background-jaeger">
       <div className="jaeger-page">
+      <Typography variant="h4" component="h2" className="header" sx={{ mb: '20px' }}>
+          Jaeger
+        </Typography>
         {/* Table container */}
         <div style={{ display: "flex", flexDirection: "column" }}>
           <TableContainer component={Paper} elevation={3} sx={{ width: 1300, margin: "0 auto", 

@@ -130,7 +130,7 @@ const NoteItem = ({ note }) => {
         onClose={handleCancel}
         sx={{ display: "flex", alignItems: "center", justifyContent: "center" }}
       >
-        <Box sx={{ bgcolor: "background.paper", p: 4 }}>
+        <Box sx={{ bgcolor: "blanchedalmond", p: 4 }}>
           <TextField
             type="text"
             label="Title"

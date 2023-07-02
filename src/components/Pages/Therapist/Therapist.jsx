@@ -1,7 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import QuestItem from "../../QuestItem/QuestItem";
-import { TableContainer, Table, TableHead, TableRow, TableCell, TableBody, Paper } from "@mui/material";
+import { TableContainer, Table, TableHead, TableRow, TableCell, TableBody, 
+  Paper, Typography } from "@mui/material"; // Material-UI imports //
 import { Pagination } from "@mui/material";
 import './Therapist.css';
 
@@ -28,7 +29,9 @@ export default function Therapist() {
   return (
     <div className="background-therapist" >
       <div className="therapist-page">
-
+      <Typography variant="h4" component="h2" className="header" sx={{ mb: '20px' }}>
+          Therapist
+        </Typography>
         <div style={{ display: "flex", flexDirection: "column" }}>
           <TableContainer component={Paper} elevation={3} sx={{ width: 1300, margin: "0 auto", backgroundColor: "rgba(255, 255, 255, 0.75)" }}>
             <Table>

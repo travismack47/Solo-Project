@@ -20,37 +20,56 @@ export default function QuestItem({ quest, traderId }) {
     });
   };
 
-  const swal = () => { // Sweet alert that pops up when a user clicks mark complete, having then confirm the completion //
+  const swal = () => { // Sweet alert that pops up when a user presses undo on a completed quest // 
+    let timerInterval
     Swal.fire({
-      title: 'Are you sure?',
-      icon: 'warning',
-      showCancelButton: true,
-      confirmButtonColor: '#3085d6',
-      cancelButtonColor: '#d33',
-      confirmButtonText: 'Yes, mark complete!'
+      title: 'Quest marked complete!',
+      html: 'I will close in <b></b> milliseconds.',
+      timer: 2000,
+      timerProgressBar: true,
+      didOpen: () => {
+        Swal.showLoading()
+        const b = Swal.getHtmlContainer().querySelector('b')
+        timerInterval = setInterval(() => {
+          b.textContent = Swal.getTimerLeft()
+        }, 100)
+        handleComplete();
+      },
+      willClose: () => {
+        clearInterval(timerInterval)
+      }
     }).then((result) => {
-      if (result.isConfirmed) {
-        Swal.fire(
-          'Completed!',
-          'Your quest has been marked complete.',
-          'success',
-          handleComplete() // Marks the quest complete if the user confirms in the alert //
-        )
+      /* Read more about handling dismissals below */
+      if (result.dismiss === Swal.DismissReason.timer) {
+        console.log('I was closed by the timer')
       }
     })
   }
 
   const swal2 = () => { // Sweet alert that pops up when a user presses undo on a completed quest // 
+    let timerInterval
     Swal.fire({
-      title: 'Quest completion status has been reversed',
-      showClass: {
-        popup: 'animate__animated animate__fadeInDown'
+      title: 'Completion status reversed!',
+      html: 'I will close in <b></b> milliseconds.',
+      timer: 2000,
+      timerProgressBar: true,
+      didOpen: () => {
+        Swal.showLoading()
+        const b = Swal.getHtmlContainer().querySelector('b')
+        timerInterval = setInterval(() => {
+          b.textContent = Swal.getTimerLeft()
+        }, 100)
+        handleUndo();
       },
-      hideClass: {
-        popup: 'animate__animated animate__fadeOutUp'
+      willClose: () => {
+        clearInterval(timerInterval)
+      }
+    }).then((result) => {
+      /* Read more about handling dismissals below */
+      if (result.dismiss === Swal.DismissReason.timer) {
+        console.log('I was closed by the timer')
       }
     })
-    handleUndo() // Reverses completed status of the quest // 
   }
   
   const isComplete = !!quest.user_quest_id; // Checking if a user_quest id exists for that quest, meaning it has been completed

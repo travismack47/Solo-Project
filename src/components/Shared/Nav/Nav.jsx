@@ -13,34 +13,6 @@ function Nav() {
   const [anchorEl, setAnchorEl] = useState(null); // State for the anchor element of the menu //
   const dispatch = useDispatch();
   const history = useHistory();
-  const location = useLocation();
-  const currentPage = location.pathname; // Get the current URL path
-
-  let pageName = '';
-
-  if (currentPage === '/prapor') {
-    pageName = 'Prapor';
-  } else if (currentPage === '/jaeger') {
-    pageName = 'Jaeger';
-  } else if (currentPage === '/mechanic') {
-    pageName = 'Mechanic';
-  } else if (currentPage === '/peacekeeper') {
-    pageName = 'Peacekeeper';
-  } else if (currentPage === '/ragman') {
-    pageName = 'Ragman';
-  } else if (currentPage === '/skier') {
-    pageName = 'Skier';
-  } else if (currentPage === '/therapist') {
-    pageName = 'Therapist';
-  } else if (currentPage === '/login') {
-    pageName = 'Login';
-  } else if (currentPage === '/registration') {
-    pageName = 'Register';
-  } else if (currentPage === '/home') {
-    pageName = 'Home';
-  } else if (currentPage === '/about') {
-    pageName = 'About';
-  }
 
   const handleOpen = (event) => { // Handles the opening of the dropdown menu //
     setIsOpen(true);
@@ -90,9 +62,6 @@ function Nav() {
               <img src={logoImage} alt="Tarkov Tracker Logo" style={{ width: 'auto', height: '50px', marginLeft: '10px',
             marginTop: '5px' }}/>
             </Link>
-          </Typography>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1, textAlign: 'center' }}>
-            {pageName}
           </Typography>
           <Box>
             {/* If no user is logged in, show login/register button */}
