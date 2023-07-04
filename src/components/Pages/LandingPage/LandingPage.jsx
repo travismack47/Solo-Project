@@ -42,7 +42,7 @@ function LandingPage() {
           About
         </Button>
         <Dialog open={open} onClose={closeDialog}>
-          <DialogTitle>About Tarkov Tracker</DialogTitle>
+          <DialogTitle align='center'>About Tarkov Tracker</DialogTitle>
           <DialogContent>
             <Typography variant='body1' gutterBottom>
               Tarkov Tracker is a minmialistic app that is used to track users' quest progress related to the FPS game Escape

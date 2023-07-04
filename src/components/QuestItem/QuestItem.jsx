@@ -25,7 +25,7 @@ export default function QuestItem({ quest, traderId }) {
     Swal.fire({
       title: 'Quest marked complete!',
       html: 'I will close in <b></b> milliseconds.',
-      timer: 1000,
+      timer: 1200,
       timerProgressBar: true,
       didOpen: () => {
         Swal.showLoading()
@@ -51,7 +51,7 @@ export default function QuestItem({ quest, traderId }) {
     Swal.fire({
       title: 'Completion status reversed!',
       html: 'I will close in <b></b> milliseconds.',
-      timer: 1000,
+      timer: 1200,
       timerProgressBar: true,
       didOpen: () => {
         Swal.showLoading()
