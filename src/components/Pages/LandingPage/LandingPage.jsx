@@ -45,7 +45,7 @@ function LandingPage() {
           <DialogTitle align='center'>About Tarkov Tracker</DialogTitle>
           <DialogContent>
             <Typography variant='body1' gutterBottom>
-              Tarkov Tracker is a minmialistic app that is used to track users' quest progress related to the FPS game Escape
+              Tarkov Tracker is a minimalistic app that is used to track users' quest progress related to the FPS game Escape
               From Tarkov available to play on PC. This app is able to track and store multiple users' quest progress as well as 
               any notes that they leave on the notes page. The "Traders" dropdown menu has a list of the 7 in-game traders with 
               links to their page and table of quests. Users can mark finished quests as "Complete" on these pages and have their
