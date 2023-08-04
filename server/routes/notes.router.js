@@ -32,11 +32,11 @@ router.post('/newnote/:id', rejectUnauthenticated, (req, res) => {
     const { title, description } = req.body;
     console.log(req.body);
     const query = `
-      INSERT INTO notes ("user_id", "title", "description")
-      VALUES ($1, $2, $3)
+      INSERT INTO notes ("user_id", "title", "description", "timestamp")
+      VALUES ($1, $2, $3, $4)
       RETURNING *;
     `;
-    const values = [userId, title, description]; // Pass the user ID as a parameter and the title and description as the request body //
+    const values = [userId, title, description, 'NOW()']; // Pass the user ID as a parameter and the title and description as the request body //
 
     pool.query(query, values)
         .then((result) => {

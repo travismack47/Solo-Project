@@ -37,6 +37,7 @@ CREATE TABLE user_quests (
 CREATE TABLE notes (
   "id" SERIAL PRIMARY KEY,
   "user_id" INT,
+  "title" TEXT,
   "description" TEXT,
   "timestamp" TIMESTAMP,
   FOREIGN KEY (user_id) REFERENCES "user"(id)

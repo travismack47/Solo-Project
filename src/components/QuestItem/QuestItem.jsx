@@ -4,7 +4,6 @@ import { TableCell, TableRow, Button } from "@mui/material"; // Imports from Mat
 import Swal from "sweetalert2"; // Importing Sweet Alert //
 import './QuestItem.css';
 import CheckIcon from '@mui/icons-material/Check';
-import ErrorIcon from '@mui/icons-material/Error';
 
 export default function QuestItem({ quest, traderId }) {
   const dispatch = useDispatch();
