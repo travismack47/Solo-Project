@@ -36,7 +36,7 @@ export default function Jaeger() {
         {/* Table container */}
         <div style={{ display: "flex", flexDirection: "column" }}>
           <TableContainer component={Paper} elevation={3} sx={{ width: 1300, margin: "0 auto", 
-          backgroundColor: "rgba(255, 255, 255, 0.75)" }}>
+          backgroundColor: "rgba(255, 255, 255, 0.87)" }}>
             <Table>
               <TableHead>
                 <TableRow>
