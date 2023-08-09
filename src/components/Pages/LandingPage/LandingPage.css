@@ -17,7 +17,7 @@
 }
 
 .paper-container {
-  height: 160px;
+  height: 130px;
   width: 400px;
   padding: 20px;
   text-align: center;
@@ -25,54 +25,4 @@
   margin-bottom: 350px;
   position: relative;
   opacity: 0.8;
-}
-
-#login-btn {
-  margin-right: 10px;
-  width: 100px;
-  height: 40px;
-  font-size: 13px;
-  font-weight: bold;
-  background-color: #0021f5;
-  color: white;
-  border-radius: 10px;
-  border: none;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
-  transition: background-color 0.3s ease;
-
-  /* Hover effect */
-  &:hover {
-    background-color: #00ccf4;
-  }
-}
-
-#register-btn {
-  width: 100px;
-  height: 40px;
-  font-size: 13px;
-  font-weight: bold;
-  background-color: #7700d8;
-  color: white;
-  border-radius: 10px;
-  border: none;
-  box-shadow: 0px 2px 4px rgba(0, 0, 0, 0.25);
-  transition: background-color 0.3s ease;
-
-  /* Hover effect */
-  &:hover {
-    background-color: #bb76f4;
-  }
-}
-
-#about-btn {
-  position: absolute;
-  bottom: 10px;
-  left: 50%;
-  transform: translateX(-50%);
-  margin-top: 20px;
-}
-
-
-#login-btn, #register-btn {
-  margin-top: 15px;
 }

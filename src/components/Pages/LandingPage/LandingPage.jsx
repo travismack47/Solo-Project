@@ -1,13 +1,57 @@
 import React from 'react';
 import { useHistory } from 'react-router-dom';
 import { useState } from 'react';
-import { Button, Typography, Paper, Dialog, DialogTitle, DialogContent } from '@mui/material';
+import { Button, Typography, Paper, Dialog, DialogTitle, DialogContent, ButtonBase, styled } from '@mui/material';
 import './LandingPage.css';
 
 function LandingPage() {
   const history = useHistory();
   const [open, setOpen] = useState(false);
 
+  const StyledButton = styled(ButtonBase)(({ theme }) => ({
+    padding: '10px 20px',
+    margin: '10px',
+    borderRadius: '10px',
+    fontWeight: 'bold',
+    fontSize: '13px',
+    transition: 'all 0.3s ease',
+    border: '2px solid transparent',
+    '&:hover': {
+      transform: 'scale(1.05)',
+      boxShadow: '0px 5px 10px rgba(0, 0, 0, 0.1)',
+    },
+  }));
+  
+  const LoginButton = styled(StyledButton)({
+    color: '#0021f5',
+    borderColor: '#0021f5',
+    backgroundColor: 'transparent',
+    '&:hover': {
+      backgroundColor: '#0021f5',
+      color: '#fff',
+    },
+  });
+  
+  const RegisterButton = styled(StyledButton)({
+    color: '#7700d8',
+    borderColor: '#7700d8',
+    backgroundColor: 'transparent',
+    '&:hover': {
+      backgroundColor: '#7700d8',
+      color: '#fff',
+    },
+  });
+  
+  const AboutButton = styled(StyledButton)({
+    color: '#000',
+    borderColor: '#000',
+    backgroundColor: 'transparent',
+    '&:hover': {
+      backgroundColor: '#000',
+      color: '#fff',
+    },
+  });
+  
   const openDialog = () => {
     setOpen(true);
   };
@@ -15,7 +59,7 @@ function LandingPage() {
   const closeDialog = () => {
     setOpen(false);
   };
-  
+
 
   const onLogin = () => {
     history.push('/login');
@@ -32,27 +76,27 @@ function LandingPage() {
           <Typography variant='h5' gutterBottom>
             Welcome to Tarkov Tracker! Please login or register a new account!
           </Typography>
-          <Button variant='contained' onClick={onLogin} id='login-btn'>
+          <LoginButton onClick={onLogin}>
             Login
-          </Button>
-          <Button variant='contained' onClick={onRegister} id='register-btn'>
+          </LoginButton>
+          <RegisterButton onClick={onRegister}>
             Register
-          </Button>
-          <Button variant='text' onClick={openDialog} id='about-btn' className='about-button'>
-          About
-        </Button>
-        <Dialog open={open} onClose={closeDialog}>
-          <DialogTitle align='center'>About Tarkov Tracker</DialogTitle>
-          <DialogContent>
-            <Typography variant='body1' gutterBottom>
-              Tarkov Tracker is a minimalistic app that is used to track users' quest progress related to the FPS game Escape
-              From Tarkov available to play on PC. This app is able to track and store multiple users' quest progress as well as 
-              any notes that they leave on the notes page. The "Traders" dropdown menu has a list of the 7 in-game traders with 
-              links to their page and table of quests. Users can mark finished quests as "Complete" on these pages and have their
-              progress stored in a database for later access if they ever sign out.
-            </Typography>
-          </DialogContent>
-        </Dialog>
+          </RegisterButton>
+          <AboutButton onClick={openDialog}>
+            About
+          </AboutButton>
+          <Dialog open={open} onClose={closeDialog}>
+            <DialogTitle align='center'>About Tarkov Tracker</DialogTitle>
+            <DialogContent>
+              <Typography variant='body1' gutterBottom>
+                Tarkov Tracker is a minimalistic app that is used to track users' quest progress related to the FPS game Escape
+                From Tarkov available to play on PC. This app is able to track and store multiple users' quest progress as well as
+                any notes that they leave on the notes page. The "Traders" dropdown menu has a list of the 7 in-game traders with
+                links to their page and table of quests. Users can mark finished quests as "Complete" on these pages and have their
+                progress stored in a database for later access if they ever sign out.
+              </Typography>
+            </DialogContent>
+          </Dialog>
         </Paper>
       </div>
     </div>
