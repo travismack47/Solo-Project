@@ -40,7 +40,7 @@ export default function Jaeger() {
             <Table>
               <TableHead>
                 <TableRow>
-                  <TableCell sx={{ maxWidth: 300 }} align="center">Name</TableCell> {/* Quest name column */}
+                  <TableCell sx={{ maxWidth: 300 }} align="center">Quest</TableCell> {/* Quest name column */}
                   <TableCell sx={{ maxWidth: 700 }} align="center">Description</TableCell> {/* Quest description column */}
                   <TableCell sx={{ width: 150 }} align="center">Mark Complete</TableCell> {/* Mark complete column */}
                   <TableCell sx={{ width: 150 }} align="center">Completed?</TableCell> {/* Completed status column */}

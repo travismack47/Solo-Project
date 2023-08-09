@@ -19,38 +19,41 @@ function LandingPage() {
     '&:hover': {
       transform: 'scale(1.05)',
       boxShadow: '0px 5px 10px rgba(0, 0, 0, 0.1)',
+      borderColor: 'transparent',
     },
   }));
   
   const LoginButton = styled(StyledButton)({
-    color: '#0021f5',
-    borderColor: '#0021f5',
+    color: '#e63946',  // Deep coral red
+    borderColor: '#e63946',
     backgroundColor: 'transparent',
     '&:hover': {
-      backgroundColor: '#0021f5',
+      backgroundColor: '#e63946',
       color: '#fff',
     },
   });
   
   const RegisterButton = styled(StyledButton)({
-    color: '#7700d8',
-    borderColor: '#7700d8',
+    color: '#fcbf49',  // Mustard yellow
+    borderColor: '#fcbf49',
     backgroundColor: 'transparent',
     '&:hover': {
-      backgroundColor: '#7700d8',
+      backgroundColor: '#fcbf49',
       color: '#fff',
     },
   });
   
   const AboutButton = styled(StyledButton)({
-    color: '#000',
-    borderColor: '#000',
+    color: '#6b5064',  // Warm plum purple
+    borderColor: '#6b5064',
     backgroundColor: 'transparent',
     '&:hover': {
-      backgroundColor: '#000',
+      backgroundColor: '#6b5064',
       color: '#fff',
     },
   });
+  
+  
   
   const openDialog = () => {
     setOpen(true);

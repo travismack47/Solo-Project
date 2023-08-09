@@ -7,7 +7,7 @@ import {
 } from 'react-router-dom';
 
 import { useDispatch, useSelector } from 'react-redux';
-
+import PraporInfo from './Pages/APITest';
 import ProtectedRoute from './Shared/ProtectedRoute/ProtectedRoute';
 // Importing component pages to set up routes for and for general access inside of this app.jsx file //
 import AboutPage from './Pages/AboutPage/AboutPage';
@@ -132,6 +132,10 @@ function App() {
 
           <Route exact path='/about'>
             <AboutPage />
+          </Route>
+
+          <Route exact path='/tester'>
+            <PraporInfo />
           </Route>
 
           {/* If none of the other routes matched, we will show a 404. */}
