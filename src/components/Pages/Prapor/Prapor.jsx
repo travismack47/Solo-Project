@@ -1,16 +1,40 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import QuestItem from "../../QuestItem/QuestItem";
-import { TableContainer, Table, TableHead, TableRow, TableCell, TableBody, 
-    Paper, Typography } from "@mui/material"; // Material-UI imports //
+import {
+    TableContainer, Table, TableHead, TableRow, TableCell, TableBody,
+    Paper, Typography
+} from "@mui/material"; // Material-UI imports //
 import { Pagination } from "@mui/material";
 import './Prapor.css';
+import { request, gql } from 'graphql-request';
+import moment from "moment";
 
 export default function Prapor() {
     const dispatch = useDispatch();
     const traderId = 1;
     const [currentPage, setCurrentPage] = useState(1);
     const questsPerPage = 5;
+
+    const getPrapor = async (e) => {
+        e.preventDefault();
+        try {
+            const query = gql`
+            {
+              traders(name: "Prapor") {
+                id
+                name
+                basePrice
+                baseImageLink
+              }
+            }
+          `;
+            const data = await request('https://api.tarkov.dev/graphql', query);
+            setItems(data.items);
+        } catch (error) {
+            console.error("Error fetching data:", error);
+        }
+    };
 
     useEffect(() => {
         dispatch({ type: "FETCH_TRADER_QUESTS", payload: traderId });
