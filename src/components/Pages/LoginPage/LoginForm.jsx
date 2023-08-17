@@ -10,19 +10,19 @@ function LoginForm() {
   const errors = useSelector(store => store.errors);
   const dispatch = useDispatch();
 
-  const login = (event) => {
+  const login = (event) => { // Function to handle logging a user in // 
     event.preventDefault();
 
     if (username && password) {
       dispatch({
         type: 'LOGIN',
-        payload: {
+        payload: { // Sending the username and password as the payload // 
           username: username,
           password: password,
         },
       });
     } else {
-      dispatch({ type: 'LOGIN_INPUT_ERROR' });
+      dispatch({ type: 'LOGIN_INPUT_ERROR' }); // Error catch for handling any login errors // 
     }
   };
 
