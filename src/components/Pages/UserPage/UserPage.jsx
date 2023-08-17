@@ -11,7 +11,7 @@ function UserPage() {
   const dispatch = useDispatch();
   const history = useHistory();
 
-  const StyledButton = styled(ButtonBase)(({ theme }) => ({
+  const StyledButton = styled(ButtonBase)(({ theme }) => ({ // Overriding Material styling to custom style button // 
     padding: '10px 20px',
     margin: '10px',
     borderRadius: '10px',
@@ -26,8 +26,8 @@ function UserPage() {
     },
   }));
 
-  const LogOutButton = styled(StyledButton)({
-    color: '#e63946',  // Deep coral red
+  const LogOutButton = styled(StyledButton)({ // Styling the log out button // 
+    color: '#e63946',  // Deep coral red // 
     borderColor: '#e63946',
     backgroundColor: 'transparent',
     '&:hover': {
@@ -36,7 +36,7 @@ function UserPage() {
     },
   });
   
-  const handleLogout = () => {
+  const handleLogout = () => { // Function to handle logging out that also pulls a Sweet Alert up // 
     Swal.fire({
       title: 'Are you sure you want to log out?',
       icon: 'warning',
@@ -52,7 +52,7 @@ function UserPage() {
           'success'
         ).then(() => {
           dispatch({ type: 'LOGOUT' });
-          history.push('/');
+          history.push('/'); // Brings the user to the home page upon logging out // 
         });
       }
     });
