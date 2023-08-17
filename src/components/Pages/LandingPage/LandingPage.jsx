@@ -8,7 +8,7 @@ function LandingPage() {
   const history = useHistory();
   const [open, setOpen] = useState(false);
 
-  const StyledButton = styled(ButtonBase)(({ theme }) => ({
+  const StyledButton = styled(ButtonBase)(({ theme }) => ({ // Overriding Material UI default styling to custom style the buttons // 
     padding: '10px 20px',
     margin: '10px',
     borderRadius: '10px',
@@ -23,7 +23,7 @@ function LandingPage() {
     },
   }));
   
-  const LoginButton = styled(StyledButton)({
+  const LoginButton = styled(StyledButton)({ // Styling the "Login" button // 
     color: '#e63946',  // Deep coral red
     borderColor: '#e63946',
     backgroundColor: 'transparent',
@@ -33,7 +33,7 @@ function LandingPage() {
     },
   });
   
-  const RegisterButton = styled(StyledButton)({
+  const RegisterButton = styled(StyledButton)({ // Styling the "Register" button // 
     color: '#fcbf49',  // Mustard yellow
     borderColor: '#fcbf49',
     backgroundColor: 'transparent',
@@ -43,7 +43,7 @@ function LandingPage() {
     },
   });
   
-  const AboutButton = styled(StyledButton)({
+  const AboutButton = styled(StyledButton)({ // Styling the "About" button // 
     color: '#6b5064',  // Warm plum purple
     borderColor: '#6b5064',
     backgroundColor: 'transparent',
@@ -55,20 +55,20 @@ function LandingPage() {
   
   
   
-  const openDialog = () => {
+  const openDialog = () => { // Function to open the "About" dialogue // 
     setOpen(true);
   };
 
-  const closeDialog = () => {
+  const closeDialog = () => { // Function to close the "About" dialogue // 
     setOpen(false);
   };
 
 
-  const onLogin = () => {
+  const onLogin = () => { // Function to bring user to login page if login is clicked // 
     history.push('/login');
   };
 
-  const onRegister = () => {
+  const onRegister = () => { // Function to bring user to register page if register is clicked // 
     history.push('/registration');
   };
 
