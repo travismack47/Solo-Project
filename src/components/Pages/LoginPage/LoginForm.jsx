@@ -1,7 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
 import { useSelector } from 'react-redux';
-import { TextField, Button, Typography } from '@mui/material';
+import { TextField, Button, Typography, styled } from '@mui/material';
 import './LoginPage.css';
 
 function LoginForm() {
@@ -25,6 +25,21 @@ function LoginForm() {
       dispatch({ type: 'LOGIN_INPUT_ERROR' }); // Error catch for handling any login errors // 
     }
   };
+
+  const StyledLoginButton = styled(Button)(({ theme }) => ({
+    color: '#00ccf4',
+    backgroundColor: 'transparent',
+    padding: '6px 12px',
+    fontSize: '0.875rem',
+    fontWeight: 500,
+    border: '2px solid transparent',
+    borderRadius: '4px',
+    transition: 'border-color 0.3s ease',
+  
+    '&:hover': {
+      borderColor: '#000',
+    },
+  }));
 
   return (
     <form className="login-form" onSubmit={login}>
@@ -61,9 +76,9 @@ function LoginForm() {
           fullWidth
           margin="normal"
         />
-        <Button variant="contained" color="primary" type="submit" id='login-btn'>
-          Login
-        </Button>
+      <StyledLoginButton type='submit'>
+        Login
+      </StyledLoginButton>  
       </div>
     </form>
   );
