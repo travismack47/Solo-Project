@@ -106,9 +106,9 @@ function App() {
             <Therapist />
           </ProtectedRoute>
 
-          <ProtectedRoute exact path='/notes'>
+          {/* <ProtectedRoute exact path='/notes'>
             <Notes />
-          </ProtectedRoute>
+          </ProtectedRoute> */}
 
           <ProtectedRoute exact path='/skier'>
             <Skier />
@@ -134,9 +134,9 @@ function App() {
             <AboutPage />
           </Route>
 
-          <Route exact path='/tester'>
+          {/* <Route exact path='/tester'>
             <PraporInfo />
-          </Route>
+          </Route> */}
 
           {/* If none of the other routes matched, we will show a 404. */}
           <Route>

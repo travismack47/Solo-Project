@@ -127,14 +127,14 @@ function Nav() {
                     </MenuItem>
                   </Menu>
                 </Modal>
-                <Button color="inherit" component={Link} to="/notes" sx={{
+                {/* <Button color="inherit" component={Link} to="/notes" sx={{
                   '&:hover': {
                     boxShadow: '0 0 8px rgba(255, 255, 255, 0.5)',
                     transition: 'box-shadow 0.3s ease-in-out',
                   },
                 }}>
                   Notes
-                </Button>
+                </Button> */}
               </>
             )}
             {/* Common link for all users */}
