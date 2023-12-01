@@ -30,8 +30,8 @@ app.use('/api/notes', notesRouter)
 // Serve static files
 app.use(express.static('build'));
 
-const PORT = process.env.PORT || 8080; // Change port to 8080
+const PORT = process.env.PORT || 5000; // Change port to 8080
 
-app.listen(PORT, '0.0.0.0', () => {
-  console.log(`Server listening on port ${PORT}`);
+app.listen(PORT, () => {
+  console.log(`Listening on port: ${PORT}`);
 });
