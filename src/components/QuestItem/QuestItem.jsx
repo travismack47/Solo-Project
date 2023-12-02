@@ -1,7 +1,7 @@
 import React from "react";
 import { useDispatch } from "react-redux";
-import { TableCell, TableRow, Button, styled } from "@mui/material"; // Imports from Material-UI //
-import Swal from "sweetalert2"; // Importing Sweet Alert //
+import { TableCell, TableRow, Button, styled } from "@mui/material"; 
+import Swal from "sweetalert2"; 
 import './QuestItem.css';
 import CheckIcon from '@mui/icons-material/Check';
 
@@ -10,7 +10,7 @@ export default function QuestItem({ quest, traderId }) {
 
   const handleComplete = () => {
     dispatch({ type: 'MARK_COMPLETE', payload: { questId: quest.id, traderId: traderId } });
-  }; // Dispatching mark complete action which adds the quest to the user_quests table, meaning it has been completed //
+  }; 
 
   const handleUndo = () => {
     dispatch({
@@ -34,7 +34,7 @@ export default function QuestItem({ quest, traderId }) {
     },
   }));
 
-  const swal = () => { // Sweet alert that pops up when a user presses undo on a completed quest // 
+  const swal = () => { 
     let timerInterval
     Swal.fire({
       title: 'Quest marked complete!',
@@ -103,7 +103,7 @@ export default function QuestItem({ quest, traderId }) {
           </StyledQuestButton>
         )}
       </TableCell>
-      <TableCell align="center">{isComplete && <CheckIcon />}</TableCell> {/* Conditionally checking if the quest is complete and displaying appropriate symbol */}
+      <TableCell align="center">{isComplete && <CheckIcon />}</TableCell> 
     </TableRow>
   );
 }

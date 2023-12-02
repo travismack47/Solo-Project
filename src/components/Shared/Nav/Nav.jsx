@@ -54,101 +54,103 @@ function Nav() {
 
   return (
     <>
-      <AppBar position="sticky" sx={{ backgroundColor: 'rgba(0, 0, 0, 0.8)', 
-      paddingLeft: '-10px' }}> {/* Keeps the nav bar located at the top of the page */}
-        <Toolbar>
-          <Typography variant="h6" component="div" sx={{ flexGrow: 1 }}>
-            <Link to="/home" style={{ textDecoration: 'none', color: 'inherit' }}>
-              <img src={logoImage} alt="Tarkov Tracker Logo" style={{ width: 'auto', height: '50px', marginLeft: '10px',
-            marginTop: '5px' }}/>
-            </Link>
-          </Typography>
-          <Box>
-            {/* If no user is logged in, show login/register button */}
-            {!user.id && ( 
-              <Button color="inherit" component={Link} to="/login" sx={{
+      <AppBar position="fixed" sx={{
+        width: '150px',
+        height: '100vh',
+        flexDirection: 'column',
+        backgroundColor: 'rgba(0, 0, 0, 1)',
+        left: 0,
+      }}>
+        <Toolbar sx={{
+          flexDirection: 'column',
+          alignItems: 'flex-start',
+          width: '100%',
+          paddingTop: '10px',
+        }}>
+          <Link to="/home" style={{ textDecoration: 'none', color: 'inherit', display: 'block', width: '100%', textAlign: 'center' }}>
+            <img src={logoImage} alt="Tarkov Tracker Logo" style={{ width: 'auto', height: '50px', marginBottom: '20px' }}/>
+          </Link>
+          {!user.id && (
+            <Button color="inherit" component={Link} to="/login" sx={{
+              width: '100%',
+              justifyContent: 'flex-start',
+              '&:hover': {
+                boxShadow: '0 0 8px rgba(255, 255, 255, 0.5)',
+                transition: 'box-shadow 0.3s ease-in-out',
+              },
+            }}>
+              Login / Register
+            </Button>
+          )}
+          {user.id && (
+            <>
+              <Button color="inherit" component={Link} to="/user" sx={{
+                width: '100%',
+                justifyContent: 'flex-start',
                 '&:hover': {
                   boxShadow: '0 0 8px rgba(255, 255, 255, 0.5)',
                   transition: 'box-shadow 0.3s ease-in-out',
                 },
               }}>
-                Login / Register
+                Home
               </Button>
-            )}
-            {/* If a user is logged in, show these links */}
-            {user.id && (
-              <>
-                <Button color="inherit" component={Link} to="/user" sx={{
-                  '&:hover': {
-                    boxShadow: '0 0 8px rgba(255, 255, 255, 0.5)',
-                    transition: 'box-shadow 0.3s ease-in-out',
-                  },
-                }}>
-                  Home
-                </Button>
-                <Button color="inherit" onClick={handleOpen} sx={{
-                  '&:hover': {
-                    boxShadow: '0 0 8px rgba(255, 255, 255, 0.5)',
-                    transition: 'box-shadow 0.3s ease-in-out',
-                  },
-                }}>
-                  Traders
-                </Button>
-                {/* Modal for the dropdown menu */}
-                <Modal open={isOpen} onClose={handleClose}>
-                  <Menu
-                    anchorEl={anchorEl}
-                    open={isOpen} // Handles opening of the menu // 
-                    onClose={handleClose} // Handles closing of the menu //
-                    anchorOrigin={{ vertical: 'top', horizontal: 'right' }} // Origin menu point relative to Traders button //
-                    transformOrigin={{ vertical: 'top', horizontal: 'right' }}
-                  >
-                    {/* Menu items for each trader */}
-                    <MenuItem component={Link} to="/jaeger" onClick={handleMenuItemClick}>
-                      Jaeger
-                    </MenuItem>
-                    <MenuItem component={Link} to="/mechanic" onClick={handleMenuItemClick}>
-                      Mechanic
-                    </MenuItem>
-                    <MenuItem component={Link} to="/peacekeeper" onClick={handleMenuItemClick}>
-                      Peacekeeper
-                    </MenuItem>
-                    <MenuItem component={Link} to="/prapor" onClick={handleMenuItemClick}>
-                      Prapor
-                    </MenuItem>
-                    <MenuItem component={Link} to="/ragman" onClick={handleMenuItemClick}>
-                      Ragman
-                    </MenuItem>
-                    <MenuItem component={Link} to="/skier" onClick={handleMenuItemClick}>
-                      Skier
-                    </MenuItem>
-                    <MenuItem component={Link} to="/therapist" onClick={handleMenuItemClick}>
-                      Therapist
-                    </MenuItem>
-                  </Menu>
-                </Modal>
-                {/* <Button color="inherit" component={Link} to="/notes" sx={{
-                  '&:hover': {
-                    boxShadow: '0 0 8px rgba(255, 255, 255, 0.5)',
-                    transition: 'box-shadow 0.3s ease-in-out',
-                  },
-                }}>
-                  Notes
-                </Button> */}
-              </>
-            )}
-            {/* Common link for all users */}
-            <Button color="inherit" component={Link} to="/about"  sx={{
-              '&:hover': {
-                boxShadow: '0 0 8px rgba(255, 255, 255, 0.5)',
-                transition: 'box-shadow 0.3s ease-in-out',
-              },
-            }}
-            >
-              About
-            </Button>
-            {/* If a user is logged in, show the logout button */}
-            {user.id && <Button color="inherit" onClick={handleLogout} sx={{
+              <Button color="inherit" onClick={handleOpen} sx={{
+                width: '100%',
+                justifyContent: 'flex-start',
+                '&:hover': {
+                  boxShadow: '0 0 8px rgba(255, 255, 255, 0.5)',
+                  transition: 'box-shadow 0.3s ease-in-out',
+                },
+              }}>
+                Traders
+              </Button>
+              <Modal open={isOpen} onClose={handleClose}>
+                <Menu
+                  anchorEl={anchorEl}
+                  open={isOpen}
+                  onClose={handleClose}
+                  anchorOrigin={{ vertical: 'top', horizontal: 'right' }}
+                  transformOrigin={{ vertical: 'top', horizontal: 'right' }}
+                >
+                  <MenuItem component={Link} to="/jaeger" onClick={handleMenuItemClick}>
+                    Jaeger
+                  </MenuItem>
+                  <MenuItem component={Link} to="/mechanic" onClick={handleMenuItemClick}>
+                    Mechanic
+                  </MenuItem>
+                  <MenuItem component={Link} to="/peacekeeper" onClick={handleMenuItemClick}>
+                    Peacekeeper
+                  </MenuItem>
+                  <MenuItem component={Link} to="/prapor" onClick={handleMenuItemClick}>
+                    Prapor
+                  </MenuItem>
+                  <MenuItem component={Link} to="/ragman" onClick={handleMenuItemClick}>
+                    Ragman
+                  </MenuItem>
+                  <MenuItem component={Link} to="/skier" onClick={handleMenuItemClick}>
+                    Skier
+                  </MenuItem>
+                  <MenuItem component={Link} to="/therapist" onClick={handleMenuItemClick}>
+                    Therapist
+                  </MenuItem>
+                </Menu>
+              </Modal>
+            </>
+          )}
+          <Button color="inherit" component={Link} to="/about" sx={{
+            width: '100%',
+            justifyContent: 'flex-start',
+            '&:hover': {
+              boxShadow: '0 0 8px rgba(255, 255, 255, 0.5)',
+              transition: 'box-shadow 0.3s ease-in-out',
+            },
+          }}>
+            About
+          </Button>
+          {user.id && (
+            <Button color="inherit" onClick={handleLogout} sx={{
+              width: '100%',
+              justifyContent: 'flex-start',
               '&:hover': {
                 boxShadow: '0 0 8px rgba(255, 255, 255, 0.5)',
                 transition: 'box-shadow 0.3s ease-in-out',
@@ -156,8 +158,7 @@ function Nav() {
             }}>
               Log Out
             </Button>
-            }
-          </Box>
+          )}
         </Toolbar>
       </AppBar>
     </>
