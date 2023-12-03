@@ -1,6 +1,7 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { Typography, Box, AppBar, Toolbar, Button, Modal, Menu, MenuItem } from '@mui/material'; // Importing MaterialUI components
+import { Box, AppBar, Toolbar, Button, Modal, Menu, MenuItem, } from '@mui/material'; // Importing MaterialUI components
+import { Logout, Info, Group } from '@mui/icons-material';
 import { useSelector, useDispatch } from 'react-redux';
 import { useState } from 'react';
 import Swal from 'sweetalert2';
@@ -54,8 +55,8 @@ function Nav() {
 
   return (
     <>
-      <AppBar position="fixed" sx={{
-        width: '150px',
+     <AppBar position="fixed" sx={{
+        width: '80px',
         height: '100vh',
         flexDirection: 'column',
         backgroundColor: 'rgba(0, 0, 0, 1)',
@@ -66,44 +67,46 @@ function Nav() {
           alignItems: 'flex-start',
           width: '100%',
           paddingTop: '10px',
+          justifyContent: 'space-between', // Align items with space between
+          height: '100%', // Full height of AppBar
         }}>
-          <Link to="/home" style={{ textDecoration: 'none', color: 'inherit', display: 'block', width: '100%', textAlign: 'center' }}>
-            <img src={logoImage} alt="Tarkov Tracker Logo" style={{ width: 'auto', height: '50px', marginBottom: '20px' }}/>
-          </Link>
-          {!user.id && (
-            <Button color="inherit" component={Link} to="/login" sx={{
-              width: '100%',
-              justifyContent: 'flex-start',
-              '&:hover': {
-                boxShadow: '0 0 8px rgba(255, 255, 255, 0.5)',
-                transition: 'box-shadow 0.3s ease-in-out',
-              },
-            }}>
-              Login / Register
-            </Button>
-          )}
-          {user.id && (
-            <>
-              <Button color="inherit" component={Link} to="/user" sx={{
+          <Box>
+            <Link to="/home" style={{ textDecoration: 'none', color: 'inherit', display: 'block', width: '100%', textAlign: 'center' }}>
+              <img src={logoImage} alt="Tarkov Tracker Logo" style={{ width: 'auto', height: '50px', marginBottom: '20px' }}/>
+            </Link>
+          </Box>
+          <Box sx={{
+            width: '100%', 
+            display: 'flex', 
+            flexDirection: 'column', 
+            alignItems: 'flex-start',
+            marginBottom: '20px',
+          }}>
+            {!user.id && (
+              <Button color="inherit" component={Link} to="/login" sx={{
                 width: '100%',
                 justifyContent: 'flex-start',
                 '&:hover': {
-                  boxShadow: '0 0 8px rgba(255, 255, 255, 0.5)',
-                  transition: 'box-shadow 0.3s ease-in-out',
+                  boxShadow: '0 0 8px rgba(255, 255, 255, 0.5)', // Adjusted hover effect
+                  borderRadius: 'px',
                 },
               }}>
-                Home
+                Login / Register
               </Button>
-              <Button color="inherit" onClick={handleOpen} sx={{
-                width: '100%',
-                justifyContent: 'flex-start',
-                '&:hover': {
-                  boxShadow: '0 0 8px rgba(255, 255, 255, 0.5)',
-                  transition: 'box-shadow 0.3s ease-in-out',
-                },
-              }}>
-                Traders
-              </Button>
+            )}
+            {user.id && (
+              <>
+                <Button color="inherit" onClick={handleOpen} sx={{
+                  width: '100%',
+                  justifyContent: 'flex-start',
+                  '&:hover': {
+                    boxShadow: 'inset 0 0 8px rgba(255, 255, 255, 0.5)', // Adjusted hover effect
+                    transition: 'box-shadow 0.3s ease-in-out',
+                  },
+                }}>
+                  <Group />
+                </Button>
+                
               <Modal open={isOpen} onClose={handleClose}>
                 <Menu
                   anchorEl={anchorEl}
@@ -145,7 +148,7 @@ function Nav() {
               transition: 'box-shadow 0.3s ease-in-out',
             },
           }}>
-            About
+            <Info />
           </Button>
           {user.id && (
             <Button color="inherit" onClick={handleLogout} sx={{
@@ -156,9 +159,10 @@ function Nav() {
                 transition: 'box-shadow 0.3s ease-in-out',
               },
             }}>
-              Log Out
+              <Logout />
             </Button>
           )}
+          </Box>
         </Toolbar>
       </AppBar>
     </>
