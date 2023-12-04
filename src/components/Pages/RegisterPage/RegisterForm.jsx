@@ -3,9 +3,10 @@ import { useDispatch, useSelector } from 'react-redux';
 import { TextField, Button, Typography } from '@mui/material';
 import { useHistory } from 'react-router-dom';
 import './RegisterPage.css';
- 
+
 function RegisterForm() {
   const [username, setUsername] = useState('');
+  const [email, setEmail] = useState(''); // State for email
   const [password, setPassword] = useState('');
   const errors = useSelector((store) => store.errors);
   const dispatch = useDispatch();
@@ -17,8 +18,9 @@ function RegisterForm() {
     dispatch({
       type: 'REGISTER',
       payload: {
-        username: username,
-        password: password,
+        username,
+        email,
+        password,
       },
     });
   };
@@ -41,6 +43,18 @@ function RegisterForm() {
           required
           value={username}
           onChange={(event) => setUsername(event.target.value)}
+          variant="outlined"
+          size="medium"
+          fullWidth
+          margin="normal"
+        />
+        <TextField
+          label="Email"
+          type="email"
+          name="email"
+          required
+          value={email}
+          onChange={(event) => setEmail(event.target.value)}
           variant="outlined"
           size="medium"
           fullWidth

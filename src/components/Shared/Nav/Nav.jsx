@@ -82,18 +82,6 @@ function Nav() {
             alignItems: 'flex-start',
             marginBottom: '20px',
           }}>
-            {!user.id && (
-              <Button color="inherit" component={Link} to="/login" sx={{
-                width: '100%',
-                justifyContent: 'flex-start',
-                '&:hover': {
-                  boxShadow: '0 0 8px rgba(255, 255, 255, 0.5)', // Adjusted hover effect
-                  borderRadius: 'px',
-                },
-              }}>
-                Login / Register
-              </Button>
-            )}
             {user.id && (
               <>
                 <Button color="inherit" onClick={handleOpen} sx={{
