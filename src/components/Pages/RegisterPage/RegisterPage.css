@@ -1,14 +1,5 @@
 .register-page {
-  position: relative;
-  background: linear-gradient(
-    to bottom,
-    #2c3e50, /* Dark desaturated blue, reminiscent of a moonlit night */
-    #4a4a4a, /* Mid-tone grey */
-    #2c3e50, /* Repeat the dark desaturated blue for consistency */
-    #1b1b1b /* Almost black, for depth */
-  );
-  
-  
+  background-image: linear-gradient(to top, #09203f 0%, #537895 100%);
 }
 
 

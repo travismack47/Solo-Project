@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
-import { Container, TextField, Button, Typography, Link } from '@mui/material';
+import { Container, TextField, Button, Typography, Link, InputAdornment } from '@mui/material';
+import { AccountBox, Email, EnhancedEncryption } from '@mui/icons-material';
 import { useHistory, Link as RouterLink } from 'react-router-dom';
 import Icon from './bearcircleicon-removebg-preview.png'
 import './RegisterPage.css';
@@ -29,11 +30,19 @@ function RegisterForm() {
   };
 
   return (
-    <Container sx={{ height: '610px', width: '400px'}}>
+    <Container sx={{ height: '670px', width: '420px', }}>
       <img src={Icon} alt="Bear Icon" style={{ width: '125px', height: '125px', margin: 'auto', display: 'block' }} />
-      <Typography variant="h4" sx={{ textAlign: 'center', marginBottom: '20px', fontWeight: 'bold'  }}>Account Registration</Typography>
-      <Typography variant="body1" sx={{ textAlign: 'center', marginBottom: '20px' }}>Already have an account? <Link component={RouterLink} to='/login'>
-      Login
+      <Typography variant="h4" sx={{ textAlign: 'center', marginBottom: '10px', fontWeight: 'bold' }}>Account Registration</Typography>
+      <Typography 
+      variant="body1"
+       sx={{ textAlign: 'center', }}
+       >
+        Already have an account?
+        <Link 
+        component={RouterLink} 
+        to='/login'
+        >
+        Login
       </Link>
       </Typography>
       <TextField
@@ -42,7 +51,14 @@ function RegisterForm() {
         onChange={(e) => setUsername(e.target.value)}
         margin="normal"
         fullWidth
-        variant='standard'
+        InputProps={{
+          startAdornment: (
+            <InputAdornment position="start">
+              <AccountBox />
+            </InputAdornment>
+          ),
+        }}
+        variant="standard"
       />
       <TextField
         label="Email"
@@ -51,8 +67,14 @@ function RegisterForm() {
         onChange={(e) => setEmail(e.target.value)}
         margin="normal"
         fullWidth
-        variant='standard'
-      />
+        InputProps={{
+          startAdornment: (
+            <InputAdornment position="start">
+              <Email />
+            </InputAdornment>
+          ),
+        }}
+        variant="standard" />
       <TextField
         label="Password"
         type="password"
@@ -60,8 +82,14 @@ function RegisterForm() {
         onChange={(e) => setPassword(e.target.value)}
         margin="normal"
         fullWidth
-        variant='standard'
-      />
+        InputProps={{
+          startAdornment: (
+            <InputAdornment position="start">
+              <EnhancedEncryption />
+            </InputAdornment>
+          ),
+        }}
+        variant="standard" />
       <TextField
         label="Confirm Password"
         type="password"
@@ -69,29 +97,51 @@ function RegisterForm() {
         onChange={(e) => setConfirmPassword(e.target.value)}
         margin="normal"
         fullWidth
-        variant='standard'
-      />
-      <Button 
-  variant="contained" 
-  onClick={registerUser}
-  sx={{
-    marginTop: 3,
-    width: '100%',
-    backgroundColor: '#1976d2', // Example blue color
-    color: 'white',
-    padding: '10px 0',
-    fontSize: '16px',
-    fontWeight: 'bold',
-    borderRadius: '8px',
-    boxShadow: '0px 3px 5px 2px rgba(0, 0, 0, 0.2)',
-    '&:hover': {
-      backgroundColor: '#1565c0', // Slightly darker shade for hover
-      boxShadow: '0px 5px 7px 3px rgba(0, 0, 0, 0.3)',
-    },
-  }}
->
-  Register
-</Button>
+        InputProps={{
+          startAdornment: (
+            <InputAdornment position="start">
+              <EnhancedEncryption />
+            </InputAdornment>
+          ),
+        }}
+        variant="standard" />
+      <Button
+        variant="outlined"
+        onClick={registerUser}
+        disableElevation
+        sx={{
+          marginTop: 2,
+          width: '100%',
+          backgroundColor: '#0F3057', // A medium shade between your gradient colors
+          color: '#E0E0E0', // Light grey for text, ensures readability
+          padding: '7px 0',
+          fontSize: '17px',
+          borderRadius: '8px',
+          textTransform: 'none',
+          border: '1px solid #305F72', // A border color that's a mix of your gradient colors
+          '&:hover': {
+            backgroundColor: '#1C415C', // A slightly darker shade for hover
+          },
+        }}
+      >
+        Register
+      </Button>
+      <Typography 
+      variant="caption" 
+      display={'block'}
+      gutterBottom
+      sx={{
+        textAlign: 'center',
+        marginTop: '40px',
+      }}
+      >
+        By clicking Register, you agree to our 
+        <Link 
+        component={RouterLink} to='/terms-of-service'
+        >
+          Terms of Service
+        </Link>
+      </Typography>
     </Container>
   );
 }
