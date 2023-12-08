@@ -38,7 +38,7 @@ function App() {
   return (
     <Router>
       <div>
-        (user.id && <Nav />)
+        {user.id && <Nav />}
         <Switch>
           <Redirect exact from="/" to="/home" />
 
