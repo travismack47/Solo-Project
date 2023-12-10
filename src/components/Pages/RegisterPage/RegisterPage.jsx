@@ -1,7 +1,7 @@
 import React from 'react';
 import RegisterForm from './RegisterForm';
 import { useHistory } from 'react-router-dom';
-import { Container, Button, Box } from '@mui/material';
+import { Container, Box } from '@mui/material';
 import './RegisterPage.css';
 
 function RegisterPage() {

@@ -22,7 +22,6 @@ import Jaeger from './Pages/Jaeger/Jaeger';
 import Peacekeeper from './Pages/Peacekeeper/Peacekeeper';
 import Mechanic from './Pages/Mechanic/Mechanic';
 import Ragman from './Pages/Ragman/Ragman';
-import Notes from './Pages/Notes/Notes';
 import './App.css';
 import Nav from './Shared/Nav/Nav';
 
@@ -64,7 +63,7 @@ function App() {
 
           <Route
             exact
-            path="/registration"
+            path="/register"
           >
             {user.id ?
 

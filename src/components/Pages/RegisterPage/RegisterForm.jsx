@@ -32,18 +32,15 @@ function RegisterForm() {
   return (
     <Container sx={{ height: '670px', width: '420px', }}>
       <img src={Icon} alt="Bear Icon" style={{ width: '125px', height: '125px', margin: 'auto', display: 'block' }} />
-      <Typography variant="h4" sx={{ textAlign: 'center', marginBottom: '10px', fontWeight: 'bold' }}>Account Registration</Typography>
-      <Typography 
-      variant="body1"
-       sx={{ textAlign: 'center', }}
-       >
-        Already have an account?
-        <Link 
-        component={RouterLink} 
-        to='/login'
-        >
-        Login
-      </Link>
+      <Typography variant="h4" sx={{ textAlign: 'center', marginBottom: '10px', }}>Register your account</Typography>
+      <Typography
+        variant="body1"
+        sx={{ textAlign: 'center' }}
+      >
+        Already have an account?{' '}
+        <Link component={RouterLink} to='/login'>
+          Login
+        </Link>
       </Typography>
       <TextField
         label="Username"
@@ -126,19 +123,35 @@ function RegisterForm() {
       >
         Register
       </Button>
-      <Typography 
-      variant="caption" 
-      display={'block'}
-      gutterBottom
-      sx={{
-        textAlign: 'center',
-        marginTop: '40px',
-      }}
+      <Typography
+        variant="subtitle2"
+        display={'block'}
+        sx={{
+          textAlign: 'center',
+          marginTop: '25px', // Adjust this to position it halfway between the Register button and the Terms of Service text
+        }}
       >
-        By clicking Register, you agree to our 
-        <Link 
-        component={RouterLink} to='/terms-of-service'
+        Having trouble registering?{' '}
+        <Link
+          href="mailto:travismack47@protonmail.com"
+          target="_blank"
+          rel="noopener noreferrer"
         >
+          Contact us
+        </Link>
+      </Typography>
+
+      <Typography
+        variant="caption"
+        display={'block'}
+        gutterBottom
+        sx={{
+          textAlign: 'center',
+          marginTop: '25px', // Adjust this to position it halfway between the Register button and the Terms of Service text
+        }}
+      >
+        By registering, you acknowledge and agree to comply with the{' '}
+        <Link component={RouterLink} to='/terms-of-service'>
           Terms of Service
         </Link>
       </Typography>

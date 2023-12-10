@@ -1,7 +1,9 @@
 import React, { useState } from 'react';
-import { useDispatch } from 'react-redux';
-import { useSelector } from 'react-redux';
-import { TextField, Button, Typography, styled } from '@mui/material';
+import { useDispatch, useSelector } from 'react-redux';
+import { Container, TextField, Button, Typography, Link, InputAdornment } from '@mui/material';
+import { AccountBox, EncahncedEncryption, EnhancedEncryption } from '@mui/icons-material';
+import { Link as RouterLink } from 'react-router-dom';
+import Icon from './bearcircleicon-removebg-preview.png';
 import './LoginPage.css';
 
 function LoginForm() {
@@ -26,61 +28,111 @@ function LoginForm() {
     }
   };
 
-  const StyledLoginButton = styled(Button)(({ theme }) => ({
-    color: '#00ccf4',
-    backgroundColor: 'transparent',
-    padding: '6px 12px',
-    fontSize: '0.875rem',
-    fontWeight: 500,
-    border: '2px solid transparent',
-    borderRadius: '4px',
-    transition: 'border-color 0.3s ease',
-  
-    '&:hover': {
-      borderColor: '#000',
-    },
-  }));
-
   return (
-    <form className="login-form" onSubmit={login}>
-      <Typography variant="h6" className="login-form-title">
-        Login
-      </Typography>
+    <Container sx={{ height: 'auto', width: '420px' }}>
+      <img src={Icon} alt="Bear Icon" style={{ width: '125px', height: '125px', margin: 'auto', display: 'block' }} />
+
+      <Typography variant="h4" sx={{ textAlign: 'center', marginBottom: '10px' }}>Login to your account</Typography>
       {errors.loginMessage && (
-        <Typography variant="h3" color="error" className="login-form-error">
+        <Typography variant="body1" color="error" sx={{ textAlign: 'center' }}>
           {errors.loginMessage}
         </Typography>
       )}
-      <div className="login-form-container">
-        <TextField
-          label="Username"
-          type="text"
-          name="username"
-          required
-          value={username}
-          onChange={(event) => setUsername(event.target.value)}
-          variant="outlined"
-          size="medium"
-          fullWidth
-          margin="normal"
-        />
-        <TextField
-          label="Password"
-          type="password"
-          name="password"
-          required
-          value={password}
-          onChange={(event) => setPassword(event.target.value)}
-          variant="outlined"
-          size="medium"
-          fullWidth
-          margin="normal"
-        />
-      <StyledLoginButton type='submit'>
+      <Typography
+        variant="body1"
+        sx={{ textAlign: 'center' }}
+      >
+        Don't have an account?{' '}
+        <Link component={RouterLink} to='/register'>
+          Register
+        </Link>
+      </Typography>
+      <TextField
+        label="Username"
+        type="text"
+        value={username}
+        onChange={(event) => setUsername(event.target.value)}
+        margin="normal"
+        fullWidth
+        InputProps={{
+          startAdornment: (
+            <InputAdornment position="start">
+              <AccountBox />
+            </InputAdornment>
+          ),
+        }}
+        variant="standard"
+      />
+      <TextField
+        label="Password"
+        type="password"
+        value={password}
+        onChange={(event) => setPassword(event.target.value)}
+        margin="normal"
+        fullWidth
+        InputProps={{
+          startAdornment: (
+            <InputAdornment position="start">
+              <EnhancedEncryption />
+            </InputAdornment>
+          ),
+        }}
+        variant="standard"
+      />
+      <Button
+        variant="outlined"
+        onClick={login}
+        disableElevation
+        sx={{
+          marginTop: 2,
+          width: '100%',
+          backgroundColor: '#0F3057',
+          color: '#E0E0E0',
+          padding: '7px 0',
+          fontSize: '17px',
+          borderRadius: '8px',
+          textTransform: 'none',
+          border: '1px solid #305F72',
+          '&:hover': {
+            backgroundColor: '#1C415C',
+          },
+        }}
+      >
         Login
-      </StyledLoginButton>  
-      </div>
-    </form>
+      </Button>
+      <Typography
+        variant="subtitle2"
+        display={'block'}
+        sx={{
+          textAlign: 'center',
+          marginTop: '25px', // Adjust this to position it halfway between the Register button and the Terms of Service text
+        }}
+      >
+        Having trouble logging in?{' '}
+        <Link
+          href="mailto:travismack47@protonmail.com"
+          target="_blank"
+          rel="noopener noreferrer"
+        >
+          Contact us
+        </Link>
+      </Typography>
+
+      <Typography
+        variant="caption"
+        display={'block'}
+        gutterBottom
+        sx={{
+          textAlign: 'center',
+          marginTop: '25px', // Adjust this to position it halfway between the Register button and the Terms of Service text
+        }}
+      >
+        By registering, you acknowledge and agree to comply with the{' '}
+        <Link component={RouterLink} to='/terms-of-service'>
+          Terms of Service
+        </Link>
+      </Typography>
+    </Container>
   );
 }
 

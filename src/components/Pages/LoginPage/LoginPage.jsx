@@ -16,22 +16,13 @@ function LoginPage() {
           sx={{
             backgroundColor: 'rgba(255, 255, 255 )',
             padding: '20px',
-            borderRadius: '10px',
+            borderRadius: '20px',
             boxShadow: '0px 2px 6px rgba(0, 0, 0, 0.3)',
-            marginTop: '150px'
+            marginTop: '120px',
+            width: 'auto',
           }}
         >
           <LoginForm />
-          <Button
-            variant="text"
-            color="primary"
-            onClick={() => {
-              history.push('/registration');
-            }}
-            sx={{ mt: 2 }}
-          >
-            Register
-          </Button>
         </Box>
       </Container>
     </div>
